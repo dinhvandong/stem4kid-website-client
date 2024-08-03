@@ -3,6 +3,8 @@ import SignupContent from "./contentDetail/SignupContent";
 import CarouselHome from "./carouselImgage/CarouselHome";
 import Content2 from "./contentDetail/Content2";
 import Content3 from "./contentDetail/Content3";
+import Content4 from "./contentDetail/Content4";
+import NumberTalk from "./contentDetail/NumberTalk";
 
 const Content = () => {
   return (
@@ -16,16 +18,12 @@ const Content = () => {
             </button>
           </div>
         </div>
-        {/* <CarouselHome />
-        <div className="flex w-full justify-center">
-          <button className="px-5 py-2 absolute bg-yellow-500 rounded-xl text-2xl w-[280px] text-red-600 font-bold">
-            HỌC THỬ MIỄN PHÍ
-          </button>
-        </div> */}
       </div>
       <SignupContent />
       <Content2 />
       <Content3 />
+      <Content4 />
+      <NumberTalk />
     </div>
   );
 };

@@ -2,12 +2,12 @@ import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { FaFacebookF } from "react-icons/fa";
-import { TbWorldWww } from "react-icons/tb";
 import { TfiYoutube } from "react-icons/tfi";
+import { TfiWorld } from "react-icons/tfi";
 
 const Footer = () => {
   return (
-    <div className="flexl flex-col bg-[#c2272d] text-white items-center">
+    <div className="flexl flex-col bg-[#c2272d] text-white items-center mt-10">
       <div className="flex flex-row ">
         <div className="felx flex-col m-3 ml-7">
           <div className="flex flex-col text-4xl">MINDX TECHNOLOGY SCHOOL</div>
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-row gap-5 mt-4 items-center">
-            <TbWorldWww className="text-4xl" />{" "}
+            <TfiWorld className="text-4xl" />{" "}
             <p className="text-xl">Website: https://mindx.edu.vn/</p>
           </div>
 
