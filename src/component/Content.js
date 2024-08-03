@@ -5,6 +5,7 @@ import Content2 from "./contentDetail/Content2";
 import Content3 from "./contentDetail/Content3";
 import Content4 from "./contentDetail/Content4";
 import NumberTalk from "./contentDetail/NumberTalk";
+import FeelParent from "./contentDetail/FeelParent";
 
 const Content = () => {
   return (
@@ -24,6 +25,7 @@ const Content = () => {
       <Content3 />
       <Content4 />
       <NumberTalk />
+      <FeelParent />
     </div>
   );
 };

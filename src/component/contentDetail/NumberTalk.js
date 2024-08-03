@@ -12,7 +12,7 @@ const NumberTalk = () => {
       </div>
 
       <div className="flex flex-row gap-32 ">
-        <div className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md">
+        <button className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md object-cover transform transition-transform hover:scale-110">
           <div className="text-5xl  font-bold flex items-center flex-col gap-5">
             <FaGraduationCap className="text-8xl  bg-red-600 text-white rounded-full" />
             <div className="text-red-600">100%</div>
@@ -22,9 +22,9 @@ const NumberTalk = () => {
             sau khi tốt nghiệp <br></br>
             (71% software <br></br>engineer, 21% data,<br></br> AI,...)
           </div>
-        </div>
+        </button>
 
-        <div className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md">
+        <button className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md object-cover transform transition-transform hover:scale-110">
           <div className="text-5xl  font-bold flex items-center flex-col gap-5">
             <BsPersonFillCheck className="text-8xl  bg-red-600 text-white rounded-full" />
             <div className="text-red-600">25000+</div>
@@ -35,9 +35,9 @@ const NumberTalk = () => {
             Stem4kids (16,5% làm việc) <br></br>
             tại nước ngoài
           </div>
-        </div>
+        </button>
 
-        <div className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md">
+        <button className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md object-cover transform transition-transform hover:scale-110">
           <div className="text-5xl font-bold flex items-center flex-col gap-5">
             <RiMoneyDollarCircleFill className="text-8xl  bg-red-600 text-white rounded-full" />
             <div className="text-red-600">1650$</div>
@@ -48,9 +48,9 @@ const NumberTalk = () => {
             học sinh sau 1,5 - 3 năm <br></br>
             tốt nghiệp từ Stem4kids
           </div>
-        </div>
+        </button>
 
-        <div className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md mb-10">
+        <button className="flex flex-col gap-5  items-center justify-center bg-white w-[265px] h-[364px] rounded-md mb-10 object-cover transform transition-transform hover:scale-110">
           <div className="text-5xl font-bold flex items-center flex-col gap-5">
             <GiWorld className="text-8xl  bg-red-600 text-white rounded-full" />
             <div className="text-red-600">3,5M$</div>
@@ -62,7 +62,7 @@ const NumberTalk = () => {
             và sẵn sàng vươn ra <br></br>
             thế giới
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );
