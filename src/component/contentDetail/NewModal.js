@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import authService from "../services/authService";
 import { toast } from "react-toastify";
 
-const Modal = ({ isOpen, onClose }) => {
+const NewModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const Modal = ({ isOpen, onClose }) => {
             className="bg-cover bg-center h-auto shadow-md z-50 "
             style={{
               backgroundImage:
-                "url('https://w0.peakpx.com/wallpaper/343/479/HD-wallpaper-yellow-lines-background-yellow-abstraction-background-creative-lines-background.jpg')",
+                "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdYxTtnYM9n9oDlIlNQunn83s2WIWI2IEWIQ&s')",
             }}
           >
             <div className="w-full h-auto px-5 py-5">
@@ -62,49 +62,49 @@ const Modal = ({ isOpen, onClose }) => {
                     className="hover:cursor-pointer"
                   />
                 </div>
-                <div className="text-4xl font-bold bg-white rounded-xl shadow-blue-700 shadow-xl px-3 py-3 ">
-                  NHẬN TƯ VẤN KHÓA HỌC VÀ ĐĂNG KÝ VOUCHER HỌC THỬ
+                <div className="text-4xl font-bold bg-blue-600  shadow-violet-600 shadow-xl rounded-xl px-3 py-3 ">
+                  ĐĂNG KÝ TRẢI NGHIỆM HỌC LẬP TRÌNH MIỄN PHÍ
                 </div>
               </div>
               <div className="h-auto w-full p-[24px] flex flex-col items-center gap-3">
                 <div className="text-xl text-black">
-                  Thời gian: 60 phút | Nội dung học thử: Phụ thuộc độ tuổi của
-                  con
+                  Thời gian: 40 phút, lịch linh động |Nội dung trải nghiệm: Tùy
+                  vào độ tuổi của con
                 </div>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-[70%] py-4 rounded-[4px] text-xl border-[3px] border-orange-400 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="name"
                   type="name"
                   placeholder="Họ tên phụ huynh"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-[70%] py-4 rounded-[4px] text-xl border-[3px] border-orange-400 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="phoneNumber"
                   type="phoneNumber"
                   placeholder="Số điện thoại"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-[70%] py-4 rounded-[4px] text-xl border-[3px] border-orange-400 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="text"
                   type="text"
                   placeholder="Khung giờ tiện nghe máy (VD: 10h - 11h)"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0 "
+                  className="w-[70%] py-4 rounded-[4px] text-xl border-[3px] border-orange-400 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0 "
                   id="address"
                   type="address"
                   placeholder="Tỉnh thành sinh sống"
                 ></input>
 
-                <button className="rounded-[8px] font-medium text-4xl  py-5  text-white bg-red-500 hover:bg-orange-300 w-[50%] mt-10">
+                <button className="rounded-[8px] font-medium text-4xl  py-5  text-white bg-red-500 hover:bg-orange-300 w-[70%] mt-10">
                   ĐĂNG KÝ NGAY
                 </button>
-                <button className="rounded-[8px] font-medium  text-5xl py-5  text-white w-[50%] ">
-                  CHỈ CÒN{" "}
-                  <span className="border border-black text-red-600 border-x-4 border-y-4  ">
-                    00
-                  </span>{" "}
-                  VOUCHER
+                <button className="rounded-[8px] font-medium  text-2xl py-5  text-black w-[10 0%] ">
+                  Stem4kids - Cam kết chất lượng giảng dạy tốt nhất và hỗ trợ
+                  học viên
+                  <span className=" text-red-600 px-2 border-b-2 border-red-600 ">
+                    trọn đời
+                  </span>
                 </button>
 
                 <button
@@ -122,4 +122,4 @@ const Modal = ({ isOpen, onClose }) => {
   );
 };
 
-export default Modal;
+export default NewModal;

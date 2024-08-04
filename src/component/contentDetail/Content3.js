@@ -10,12 +10,13 @@ import { LiaHandshakeSolid } from "react-icons/lia";
 const Content3 = () => {
   return (
     <div className="flex flex-col md:flex-col gap-8 bg-white items-center mt-12">
-      <div className="text-red-600 font-bold md:text-3xl text-5xl">
-        CÁC KHÓA HỌC LẬP TRÌNH TẠI MINDX KIDS
+      <div className="text-red-600 font-bold text-2xl md:text-5xl">
+        CÁC KHÓA HỌC LẬP TRÌNH TẠI STEM4KIDS
       </div>
+      <hr className="border border-red-500 md:w-[15%] w-[50%] items-center"></hr>
 
-      <div className="flex flex-col gap-8 items-center">
-        <div className="flex flex-row gap-14">
+      <div className="flex md:flex-col flex-row gap-8 md:items-center">
+        <div className="flex md:flex-row flex-col gap-14">
           <button className="w-[300px] h-[75px] flex flex-col border-[3px]  justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
             <div className="flex flex-row gap-4 items-center">
               <SiScratch className=" text-5xl border text-white items-center border-red-600 rounded-full bg-red-600" />
@@ -46,8 +47,7 @@ const Content3 = () => {
             </div>
           </button>
         </div>
-
-        <div className="flex flex-row gap-14">
+        <div className="flex md:flex-row flex-col gap-14 ">
           <button className="w-[300px] h-[75px] flex flex-col border-[3px]  justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
             <div className="flex flex-row gap-4 items-center">
               <TbWorldWww className=" text-5xl border text-white items-center border-red-600 rounded-full bg-red-600" />
@@ -58,7 +58,7 @@ const Content3 = () => {
             </div>
           </button>
 
-          <button className="w-[300px] h-[75px] flex flex-col border-[3px]  justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
+          <button className="w-[300px] h-[75px] flex flex-col  border-[3px]  justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
             <div className="flex flex-row gap-4 items-center">
               <RiComputerLine className=" text-5xl border text-white items-center border-red-600 rounded-full bg-red-600" />
               <div className="items-end">
@@ -68,7 +68,7 @@ const Content3 = () => {
             </div>
           </button>
 
-          <button className="w-[300px] h-[75px] flex flex-col border-[3px] bg-red-700 justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
+          <button className="w-[300px] h-[75px] hidden md:flex flex-col border-[3px] bg-red-700 justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
             <div className="flex flex-row gap-4 items-center">
               <LiaHandshakeSolid className=" text-5xl border items-center text-red-700 border-white rounded-full bg-white" />
               <div className="items-end text-white ">
@@ -87,6 +87,18 @@ const Content3 = () => {
               </div>
             </div>
           </button>
+
+          <div className="items-start">
+            <button className="w-[300px]  md:hidden h-[75px] flex flex-col border-[3px] bg-red-700 justify-center items-center border-red-600 pl-3 pr-3 rounded-md">
+              <div className="flex flex-row gap-4 items-center">
+                <LiaHandshakeSolid className=" text-5xl border items-center text-red-700 border-white rounded-full bg-white" />
+                <div className="items-end text-white ">
+                  <div className="font-bold">Lộ trình bảo trợ việc làm</div>
+                  <div className="text-lg">Từ 8 tuổi</div>
+                </div>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

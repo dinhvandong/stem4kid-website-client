@@ -39,7 +39,8 @@ const SignupContent = () => {
 
           <div className="text-black text-2xl font-semibold mt-7 w-full">
             Đăng ký ngay hôm nay nhận trọn bộ{" "}
-            <span className="text-red-600">quà tặng độc quyền</span> từ MindX:
+            <span className="text-red-600">quà tặng độc quyền</span> từ
+            Stem4kids:
           </div>
 
           <div className="flex flex-col gap-7 mt-7 text-xl font-semibold">

@@ -25,14 +25,14 @@ const Header = (props) => {
         </a>
       </div>
 
-      <div className="hidden md:block md:w-1/6  ">Tại sao chọn MindX</div>
+      <div className="hidden md:block md:w-1/6  ">Tại sao chọn Stem4kids</div>
       <div className="md:w-1/6 w-1/3 ">Các khóa học</div>
-      <div className="hidden md:block md:w-1/6 ">Báo chí nói về MindX</div>
+      <div className="hidden md:block md:w-1/6 ">Báo chí nói về Stem4kids</div>
       <div className="hidden md:block  md:w-1/6 ">Thành tích học viên</div>
 
       <div className="md:w-1/6 w-1/3">
         <button
-          className="auto-zoom-out-button px-5 py-3  bg-red-600 border  rounded-full p-3 text-white"
+          className="auto-zoom-out-button px-5 py-3  bg-red-600 border   rounded-full p-3 text-white"
           onClick={openModal}
         >
           Học thử ngay

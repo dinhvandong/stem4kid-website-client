@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import VideoPlayer from "../videoPlay/VideoPlayer ";
+import NewModal from "./NewModal";
 
-const Content2 = () => {
+const Content2 = (props) => {
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col md:flex-row bg-[#fce5dd] w-full h-auto ">
         <div className="bg-white w-full md:w-[50vw]">
           <div className="flex items-center flex-col mt-5 gap-5">
-            <div className="text-4xl font-extrabold text-red-600">
-              TẠI SAO NÊN CHO CON HỌC <br></br> LẬP TRÌNH SỚM TẠI MINDX
+            <div className="md:text-4xl text-xl font-extrabold text-red-600">
+              TẠI SAO NÊN CHO CON HỌC <br></br> LẬP TRÌNH SỚM TẠI STEM4KIDS?
             </div>
 
             <div className="text-lg font-medium pl-5">
@@ -76,9 +86,13 @@ const Content2 = () => {
           </div>
           <VideoPlayer videoId={"RobAKsukQck"} width={800} height={480} />
 
-          <button className="px-10 py-5 auto-zoom-out-button   bg-red-700 rounded-md text-2xl w-[280px] text-white font-bold">
+          <button
+            className="px-10 py-5 auto-zoom-out-button   bg-red-700 rounded-md text-2xl w-[280px] text-white font-bold"
+            onClick={openModal}
+          >
             ĐĂNG KÝ NGAY
           </button>
+          <NewModal isOpen={isOpenModal} onClose={closeModal} />
         </div>
       </div>
     </div>

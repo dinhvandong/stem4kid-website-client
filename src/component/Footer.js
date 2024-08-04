@@ -7,12 +7,54 @@ import { TfiWorld } from "react-icons/tfi";
 
 const Footer = () => {
   return (
-    <div className="flexl flex-col bg-[#c2272d] text-white items-center mt-10">
-      <div className="flex flex-row ">
+    <div className="flexl flex-col bg-[#c2272d] text-white items-center mt-2">
+      <div className="flex md:flex-row flex-col">
         <div className="felx flex-col m-3 ml-7">
-          <div className="flex flex-col text-4xl">MINDX TECHNOLOGY SCHOOL</div>
+          <div className="flex flex-col md:text-4xl text-4xl">
+            MINDX TECHNOLOGY SCHOOL
+          </div>
           <div className="flex flex-col text-4xl ">---------</div>
-          <div className="flex flex-col text-4xl ">LIÊN HỆ</div>
+
+          <div className="md:block hidden">
+            <div className="flex flex-col text-4xl ">LIÊN HỆ</div>
+            <div className="flex flex-row gap-5 mt-4  items-center">
+              <FaPhoneAlt className="text-3xl" />{" "}
+              <p className="text-xl">Hotline:</p>
+            </div>
+            <div className="flex ml-12 text-xl flex-col gap-4">
+              <div className="flex flex-col ">
+                - Khu vực Hà Nội: 024 7771 7888{" "}
+              </div>
+              <div className="flex flex-col ">
+                - Khu vực Hồ Chí Minh: 028 7771 7789{" "}
+              </div>
+              <div className="flex flex-col ">
+                - Khu vực các Tỉnh: 02477708666{" "}
+              </div>
+            </div>
+            <div className="flex flex-row gap-5 mt-4 items-center">
+              <HiOutlineMailOpen className="text-4xl" />{" "}
+              <p className="text-xl">Email: contact@mindx.edu.vn</p>
+            </div>
+
+            <div className="flex flex-row gap-5 mt-4 items-center">
+              <FaFacebookF className="text-4xl" />{" "}
+              <p className="text-xl">
+                Fanpage: MindX Kids - Trường Học Công Nghệ
+              </p>
+            </div>
+
+            <div className="flex flex-row gap-5 mt-4 items-center">
+              <TfiWorld className="text-4xl" />{" "}
+              <p className="text-xl">Website: https://mindx.edu.vn/</p>
+            </div>
+
+            <div className="flex flex-row gap-5 mt-4 items-center">
+              <TfiYoutube className="text-4xl" />{" "}
+              <p className="text-xl">Youtube: MindX School </p>
+            </div>
+          </div>
+          {/* <div className="flex flex-col text-4xl ">LIÊN HỆ</div>
           <div className="flex flex-row gap-5 mt-4  items-center">
             <FaPhoneAlt className="text-3xl" />{" "}
             <p className="text-xl">Hotline:</p>
@@ -48,9 +90,9 @@ const Footer = () => {
           <div className="flex flex-row gap-5 mt-4 items-center">
             <TfiYoutube className="text-4xl" />{" "}
             <p className="text-xl">Youtube: MindX School </p>
-          </div>
+          </div> */}
         </div>
-        <div className="flex flex-col mt-14 gap-7">
+        <div className="flex flex-col md:mt-14 gap-7 ml-10">
           <div className="text-3xl">Khu vực miền Bắc</div>
           <div className="text-lg">
             - Tầng 2, 29T1 Hoàng Đạo Thuý, Phường Trung Hòa,<br></br> Quận Cầu
@@ -121,7 +163,7 @@ const Footer = () => {
             Phong, Quận 7, TP HCM
           </div>
         </div>
-        <div className="flex flex-col mt-16 ml-14 gap-7">
+        <div className="flex flex-col mt-16 ml-10 gap-7">
           <div className="text-lg">
             - 174 đường số 1 KĐT Tên Lửa, Phường Bình Trị Đông B,<br></br> Quận
             Bình Tân, TP HCM
@@ -162,9 +204,50 @@ const Footer = () => {
             HCM (Khai trương tháng 8)
           </div>
         </div>
+
+        <div className="md:hidden ml-10">
+          <div className="flex flex-col text-4xl ">LIÊN HỆ</div>
+          <div className="flex flex-row gap-5 mt-4  items-center">
+            <FaPhoneAlt className="text-3xl" />{" "}
+            <p className="text-xl">Hotline:</p>
+          </div>
+          <div className="flex ml-12 text-xl flex-col gap-4">
+            <div className="flex flex-col ">
+              - Khu vực Hà Nội: 024 7771 7888{" "}
+            </div>
+            <div className="flex flex-col ">
+              - Khu vực Hồ Chí Minh: 028 7771 7789{" "}
+            </div>
+            <div className="flex flex-col ">
+              - Khu vực các Tỉnh: 02477708666{" "}
+            </div>
+          </div>
+          <div className="flex flex-row gap-5 mt-4 items-center">
+            <HiOutlineMailOpen className="text-4xl" />{" "}
+            <p className="text-xl">Email: contact@mindx.edu.vn</p>
+          </div>
+
+          <div className="flex flex-row gap-5 mt-4 items-center">
+            <FaFacebookF className="text-4xl" />{" "}
+            <p className="text-xl">
+              Fanpage: MindX Kids - Trường Học Công Nghệ
+            </p>
+          </div>
+
+          <div className="flex flex-row gap-5 mt-4 items-center">
+            <TfiWorld className="text-4xl" />{" "}
+            <p className="text-xl">Website: https://mindx.edu.vn/</p>
+          </div>
+
+          <div className="flex flex-row gap-5 mt-4 items-center">
+            <TfiYoutube className="text-4xl" />{" "}
+            <p className="text-xl">Youtube: MindX School </p>
+          </div>
+        </div>
       </div>
-      <div className="flex items-center justify-center m-12 font-bold">
-        CÔNG TY CỔ PHẦN GIÁO DỤC CÔNG NGHỆ MINDX . Mã số thuế: 0107371744
+
+      <div className="flex items-center w-full md:text-xl text-sm justify-center mt-10 font-bold">
+        CÔNG TY CỔ PHẦN GIÁO DỤC CÔNG NGHỆ STEM4KIDS . Mã số thuế: 0107371744
       </div>
     </div>
   );

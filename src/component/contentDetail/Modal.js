@@ -62,7 +62,7 @@ const Modal = ({ isOpen, onClose }) => {
                     className="hover:cursor-pointer"
                   />
                 </div>
-                <div className="text-4xl font-bold bg-white rounded-xl shadow-blue-700 shadow-xl px-3 py-3 ">
+                <div className="text-4xl font-bold bg-white rounded-xl px-3 py-3 ">
                   NHẬN TƯ VẤN KHÓA HỌC VÀ ĐĂNG KÝ VOUCHER HỌC THỬ
                 </div>
               </div>
@@ -72,25 +72,25 @@ const Modal = ({ isOpen, onClose }) => {
                   con
                 </div>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-[50%] py-5 rounded-[4px] text-xl  border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="name"
                   type="name"
                   placeholder="Họ tên phụ huynh"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="phoneNumber"
                   type="phoneNumber"
                   placeholder="Số điện thoại"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="text"
                   type="text"
                   placeholder="Khung giờ tiện nghe máy (VD: 10h - 11h)"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[1px] hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0 "
+                  className="w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0 "
                   id="address"
                   type="address"
                   placeholder="Tỉnh thành sinh sống"
