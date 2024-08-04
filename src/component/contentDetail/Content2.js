@@ -17,12 +17,12 @@ const Content2 = (props) => {
       <div className="flex flex-col md:flex-row bg-[#fce5dd] w-full h-auto ">
         <div className="bg-white w-full md:w-[50vw]">
           <div className="flex items-center flex-col mt-5 gap-5">
-            <div className="md:text-4xl text-xl font-extrabold text-red-600">
+            <div className="md:text-4xl text-xl font-extrabold text-textmaincolor">
               TẠI SAO NÊN CHO CON HỌC <br></br> LẬP TRÌNH SỚM TẠI STEM4KIDS?
             </div>
 
             <div className="text-lg font-medium pl-5">
-              <div className="flex flex-row gap-5 items-end text-red-600">
+              <div className="flex flex-row gap-5 items-end text-textmaincolor">
                 <div className="text-3xl font-medium">01.</div>{" "}
                 <span className="text-lg font-medium">
                   Khai phá tiềm năng và thúc đẩy sự tự tin
@@ -36,7 +36,7 @@ const Content2 = (props) => {
             </div>
 
             <div className="text-lg font-medium pl-5">
-              <div className="flex flex-row gap-5 items-end text-red-600">
+              <div className="flex flex-row gap-5 items-end text-textmaincolor">
                 <div className="text-3xl font-medium">02.</div>{" "}
                 <span className="text-lg font-medium">Học đi đôi với hành</span>
               </div>
@@ -47,7 +47,7 @@ const Content2 = (props) => {
             </div>
 
             <div className="text-lg font-medium pl-5">
-              <div className="flex flex-row gap-5 items-end text-red-600">
+              <div className="flex flex-row gap-5 items-end text-textmaincolor">
                 <div className="text-3xl font-medium">03.</div>{" "}
                 <span className="text-lg font-medium">
                   Phụ huynh dễ dàng theo dõi sự tiến bộ
@@ -61,7 +61,7 @@ const Content2 = (props) => {
             </div>
 
             <div className="text-lg font-medium">
-              <div className="flex flex-row gap-5 items-end text-red-600">
+              <div className="flex flex-row gap-5 items-end text-textmaincolor">
                 <div className="text-3xl font-medium">04.</div>{" "}
                 <span className="text-lg font-medium">
                   Định hướng nghề nghiệp sớm
@@ -87,7 +87,7 @@ const Content2 = (props) => {
           <VideoPlayer videoId={"RobAKsukQck"} width={800} height={480} />
 
           <button
-            className="px-10 py-5 auto-zoom-out-button   bg-red-700 rounded-md text-2xl w-[280px] text-white font-bold"
+            className="px-10 py-5 auto-zoom-out-button   bg-maincolor rounded-md text-2xl w-[280px] text-textmaincolor font-bold"
             onClick={openModal}
           >
             ĐĂNG KÝ NGAY

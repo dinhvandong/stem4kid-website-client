@@ -48,11 +48,11 @@ const Modal = ({ isOpen, onClose }) => {
           <div className="fixed inset-0 bg-black opacity-50"></div>
           {/* <div className="bg-white rounded-[12px] shadow-md z-50"> */}
           <div
-            className="bg-cover bg-center h-auto shadow-md z-50 "
-            style={{
-              backgroundImage:
-                "url('https://w0.peakpx.com/wallpaper/343/479/HD-wallpaper-yellow-lines-background-yellow-abstraction-background-creative-lines-background.jpg')",
-            }}
+            className="bg-cover bg-center bg-maincolor h-auto shadow-md z-50 "
+            // style={{
+            //   backgroundImage:
+            //     "url('https://w0.peakpx.com/wallpaper/343/479/HD-wallpaper-yellow-lines-background-yellow-abstraction-background-creative-lines-background.jpg')",
+            // }}
           >
             <div className="w-full h-auto px-5 py-5">
               <div className="flex flex-col gap-5 items-end">
@@ -67,52 +67,52 @@ const Modal = ({ isOpen, onClose }) => {
                 </div>
               </div>
               <div className="h-auto w-full p-[24px] flex flex-col items-center gap-3">
-                <div className="text-xl text-black">
+                <div className="text-2xl text-black font-bold">
                   Thời gian: 60 phút | Nội dung học thử: Phụ thuộc độ tuổi của
                   con
                 </div>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl  border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-full md:w-[50%] py-5 rounded-[4px] text-xl  border-[3px] border-textmaincolor hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="name"
                   type="name"
                   placeholder="Họ tên phụ huynh"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-full md:w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-textmaincolor hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="phoneNumber"
                   type="phoneNumber"
                   placeholder="Số điện thoại"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
+                  className="w-full md:w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-textmaincolor hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0"
                   id="text"
                   type="text"
                   placeholder="Khung giờ tiện nghe máy (VD: 10h - 11h)"
                 ></input>
                 <input
-                  className="w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-red-600 hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0 "
+                  className=" w-full md:w-[50%] py-5 rounded-[4px] text-xl border-[3px] border-textmaincolor hover:border-blue-400 px-[10px] focus:outline-none focus:ring-0 "
                   id="address"
                   type="address"
                   placeholder="Tỉnh thành sinh sống"
                 ></input>
 
-                <button className="rounded-[8px] font-medium text-4xl  py-5  text-white bg-red-500 hover:bg-orange-300 w-[50%] mt-10">
+                <button className="rounded-[8px] font-medium text-4xl  py-5  text-textmaincolor bg-white hover:bg-red-600 hover:text-white w-full md:w-[50%] mt-10">
                   ĐĂNG KÝ NGAY
                 </button>
-                <button className="rounded-[8px] font-medium  text-5xl py-5  text-white w-[50%] ">
+                <button className="rounded-[8px] font-medium  md:text-5xl text-2xl py-5  text-textmaincolor w-[50%] ">
                   CHỈ CÒN{" "}
-                  <span className="border border-black text-red-600 border-x-4 border-y-4  ">
+                  <span className="border border-textmaincolor text-red-600 border-x-4 border-y-4  ">
                     00
                   </span>{" "}
                   VOUCHER
                 </button>
 
-                <button
-                  className="mr-[6px] rounded-[8px] font-medium px-10 py-3 bg-red-500 hover:bg-slate-200"
+                {/* <button
+                  className="mr-[6px] rounded-[8px] font-medium px-10 py-3 bg-red-500 text-white hover:bg-slate-200"
                   onClick={onClose}
                 >
                   HỦY
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

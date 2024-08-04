@@ -7,11 +7,11 @@ import { TfiWorld } from "react-icons/tfi";
 
 const Footer = () => {
   return (
-    <div className="flexl flex-col bg-[#c2272d] text-white items-center mt-2">
+    <div className="flexl flex-col bg-maincolor text-textmaincolor items-center mt-2">
       <div className="flex md:flex-row flex-col">
         <div className="felx flex-col m-3 ml-7">
-          <div className="flex flex-col md:text-4xl text-4xl">
-            MINDX TECHNOLOGY SCHOOL
+          <div className="flex flex-col md:text-4xl text-5xl font-bold">
+            STEM4KIDS
           </div>
           <div className="flex flex-col text-4xl ">---------</div>
 
@@ -94,7 +94,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col md:mt-14 gap-7 ml-10">
           <div className="text-3xl">Khu vực miền Bắc</div>
-          <div className="text-lg">
+          {/* <div className="text-lg">
             - Tầng 2, 29T1 Hoàng Đạo Thuý, Phường Trung Hòa,<br></br> Quận Cầu
             Giấy, Hà Nội
           </div>
@@ -156,9 +156,9 @@ const Footer = () => {
           <div className="text-lg">
             - UPGen Đại học Bách khoa - 268 Lý Thường Kiệt, Phường <br></br>14,
             Quận 10, TP HCM
-          </div>
+          </div> */}
 
-          <div className="text-lg">
+          {/* <div className="text-lg">
             - Số 490 Phạm Thái Bường, KĐT Phú Mỹ Hưng, Phường <br></br>Tân
             Phong, Quận 7, TP HCM
           </div>
@@ -197,7 +197,7 @@ const Footer = () => {
             - Lầu 4, Toà nhà Genpacific (Cổng vào Công Viên Phần <br></br> Mềm
             Quang Trung), 1 Tô Ký, phường Tân Hưng Thuận, <br></br> Quận 12, TP
             HCM (Khai trương tháng 8)
-          </div>
+          </div> */}
 
           <div className="text-lg">
             - Lầu trệt và lầu 1, 223 Nguyễn Xí, Phường 13, Quận Bình Thạnh, TP
