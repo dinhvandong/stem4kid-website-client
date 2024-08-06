@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "..//assets/logo.png";
-import SearchInput from "./SearchInput ";
 import { IoNotifications } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
@@ -13,9 +12,9 @@ const HeaderAdmin = () => {
         {/* </a> */}
       </div>
 
-      <div className="flex flex-row items-center w-full">
+      {/* <div className="flex flex-row items-center w-full">
         <SearchInput className="w-full" />
-      </div>
+      </div> */}
 
       <div className="flex flex-row items-center justify-end gap-5 w-full text-2xl font-bold text-textmaincolor">
         <div className="">Forum</div>

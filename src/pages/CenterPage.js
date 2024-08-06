@@ -2,7 +2,7 @@ import React from "react";
 import HeaderAdmin from "../componentAdmin/HeaderAdmin";
 import SiderBar from "../componentAdmin/SiderBar";
 
-const AdminPage = () => {
+const CenterPage = () => {
   return (
     <div className="flex flex-col gap-1">
       <div className="h-[10vh]">
@@ -10,14 +10,14 @@ const AdminPage = () => {
       </div>
       <div className="w-full h-auto flex">
         <div className="w-[15%] ">
-          <SiderBar tab={1} />
+          <SiderBar tab={6} />
         </div>
 
-        <div className="w-[85%] bg-red-500">aaaa</div>
+        <div className="w-[85%] bg-red-500"></div>
       </div>
       {/* <Test /> */}
     </div>
   );
 };
 
-export default AdminPage;
+export default CenterPage;
