@@ -1,10 +1,11 @@
 import React from "react";
 import HeaderAdmin from "../componentAdmin/HeaderAdmin";
 import SiderBar from "../componentAdmin/SiderBar";
+import TableCourse from "../componentAdmin/table/TableCourse";
 
 const AdminPage = () => {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col ">
       <div className="h-[10vh]">
         <HeaderAdmin />
       </div>
@@ -13,7 +14,9 @@ const AdminPage = () => {
           <SiderBar tab={1} />
         </div>
 
-        <div className="w-[85%] bg-red-500">aaaa</div>
+        <div className="w-[85%]  h-full">
+          <TableCourse />
+        </div>
       </div>
       {/* <Test /> */}
     </div>

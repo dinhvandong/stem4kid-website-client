@@ -3,13 +3,13 @@ import { IoMenu } from "react-icons/io5";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const SiderBar = ({ tab }) => {
-  const CssTab1 = tab == 1 ? "bg-maincolor" : "bg-white";
-  const CssTab2 = tab == 2 ? "bg-maincolor" : "bg-white";
-  const CssTab3 = tab == 3 ? "bg-maincolor" : "bg-white";
-  const CssTab4 = tab == 4 ? "bg-maincolor" : "bg-white";
-  const CssTab5 = tab == 5 ? "bg-maincolor" : "bg-white";
-  const CssTab6 = tab == 6 ? "bg-maincolor" : "bg-white";
-  const CssTab7 = tab == 7 ? "bg-maincolor" : "bg-white";
+  const CssTab1 = tab == 1 ? "bg-[#81ecec]" : "bg-white";
+  const CssTab2 = tab == 2 ? "bg-[#81ecec]" : "bg-white";
+  const CssTab3 = tab == 3 ? "bg-[#81ecec]" : "bg-white";
+  const CssTab4 = tab == 4 ? "bg-[#81ecec]" : "bg-white";
+  const CssTab5 = tab == 5 ? "bg-[#81ecec]" : "bg-white";
+  const CssTab6 = tab == 6 ? "bg-[#81ecec]" : "bg-white";
+  const CssTab7 = tab == 7 ? "bg-[#81ecec]" : "bg-white";
 
   const navigate = useNavigate();
 
