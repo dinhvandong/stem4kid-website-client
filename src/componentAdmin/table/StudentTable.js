@@ -190,7 +190,7 @@ const StudentTable = () => {
       ),
     },
     {
-      title: "Tên Học Viên",
+      title: "Họ Và Tên",
       dataIndex: "student_name",
       key: "student_name",
       width: "15%",

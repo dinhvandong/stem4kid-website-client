@@ -2,67 +2,51 @@ import React, { useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
-import logo from "../../assets/logo.png";
 const data = [
   {
     key: "1",
-    id: 1,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
+    record_id: 1,
+    transaction_date: "10/10/2023",
+    description: "Đã chuyển khoản trước 1 nửa số tiền học",
+    amount: "3.000.000vnd",
+    category: "Khóa Java FullStack",
+    transaction_type: "Thu Tiền Học Phí",
+    account_id: "1",
   },
+
   {
     key: "2",
-    id: 2,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
+    record_id: 2,
+    transaction_date: "10/10/2023",
+    description: "Đã chuyển khoản trước 1 nửa số tiền học",
+    amount: "3.000.000vnd",
+    category: "Khóa Java FullStack",
+    transaction_type: "Thu Tiền Học Phí",
+    account_id: "1",
   },
   {
     key: "3",
-    id: 3,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
+    record_id: 3,
+    transaction_date: "10/10/2023",
+    description: "Đã chuyển khoản trước 1 nửa số tiền học",
+    amount: "3.000.000vnd",
+    category: "Khóa Java FullStack",
+    transaction_type: "Thu Tiền Học Phí",
+    account_id: "1",
   },
+
   {
     key: "4",
-    id: 4,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
-    avatar: `${logo}`,
+    record_id: 4,
+    transaction_date: "10/10/2023",
+    description: "Đã chuyển khoản trước 1 nửa số tiền học",
+    amount: "3.000.000vnd",
+    category: "Khóa Java FullStack",
+    transaction_type: "Thu Tiền Học Phí",
+    account_id: "1",
   },
 ];
-const TableCourse = () => {
+const FinanceTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
@@ -181,70 +165,54 @@ const TableCourse = () => {
   const columns = [
     {
       title: "ID",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "record_id",
+      key: "record_id",
       width: "5%",
-      ...getColumnSearchProps("id"),
+      ...getColumnSearchProps("record_id"),
     },
     {
-      title: "Tên Khóa Học",
-      dataIndex: "name_course",
-      key: "name_course",
+      title: "Ngày Giao Dịch",
+      dataIndex: "transaction_date",
+      key: "transaction_date",
       width: "10%",
-      ...getColumnSearchProps("name_course"),
+      ...getColumnSearchProps("transaction_date"),
     },
     {
-      title: "Mã Khóa Học",
-      dataIndex: "course_code",
-      key: "course_code ",
-      ...getColumnSearchProps("course_code"),
-      width: "10%",
-      // sorter: (a, b) => a.address.length - b.address.length,
-      // sortDirections: ["descend", "ascend"],
+      title: "Mô Tả",
+      dataIndex: "description",
+      key: "description",
+      width: "15%",
+      ...getColumnSearchProps("description"),
     },
     {
-      title: "Chuyên Ngành",
+      title: "Số Tiền",
+      dataIndex: "amount",
+      key: "amount ",
+      ...getColumnSearchProps("amount"),
+      width: "5%",
+    },
+
+    {
+      title: "Danh Mục",
       dataIndex: "category",
       key: "category",
-      width: "15%",
+      width: "10%",
       ...getColumnSearchProps("category"),
     },
-    {
-      title: "Giảng Viên",
-      dataIndex: "instructor",
-      key: "instructor",
-      width: "15%",
-      ...getColumnSearchProps("instructor "),
-    },
-    {
-      title: "Ngày Bắt Đầu",
-      dataIndex: "start_date",
-      key: "start_date",
-      width: "10%",
-      ...getColumnSearchProps("start_date "),
-    },
 
     {
-      title: "Ngày Kết Thúc",
-      dataIndex: "end_date",
-      key: "end_date",
+      title: "Loại Giao Dịch",
+      dataIndex: "transaction_type",
+      key: "transaction_type",
       width: "10%",
-      ...getColumnSearchProps("end_date"),
-    },
-
-    {
-      title: "Số Giờ Học Dự Kiến",
-      dataIndex: "duration_hours",
-      key: "duration_hours",
-      width: "10%",
-      ...getColumnSearchProps("duration_hours"),
+      ...getColumnSearchProps("transaction_type"),
     },
     {
-      title: "Loại Hình Thức Khóa Học",
-      dataIndex: "course_type",
-      key: "course_type",
-      width: "20%",
-      ...getColumnSearchProps("course_type"),
+      title: "Tài Khoản Liên Kết",
+      dataIndex: "account_id",
+      key: "account_id",
+      width: "10%",
+      ...getColumnSearchProps("account_id"),
     },
   ];
 
@@ -257,4 +225,5 @@ const TableCourse = () => {
     />
   );
 };
-export default TableCourse;
+
+export default FinanceTable;

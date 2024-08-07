@@ -2,67 +2,55 @@ import React, { useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
-import logo from "../../assets/logo.png";
 const data = [
   {
     key: "1",
-    id: 1,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
+    facility_id: 1,
+    facility_name: "Lê Thanh Nghị",
+    location: "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội",
+    capacity: "150",
+    current_usage: "120",
+    number_of_classroms: "15",
+    open_hours: "09:00 AM",
+    close_hours: "21:00 PM",
   },
+
   {
     key: "2",
-    id: 2,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
+    facility_id: 2,
+    facility_name: "Lê Thanh Nghị",
+    location: "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội",
+    capacity: "150",
+    current_usage: "120",
+    number_of_classroms: "15",
+    open_hours: "09:00 AM",
+    close_hours: "21:00 PM",
   },
   {
     key: "3",
-    id: 3,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
+    facility_id: 3,
+    facility_name: "Lê Thanh Nghị",
+    location: "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội",
+    capacity: "150",
+    current_usage: "120",
+    number_of_classroms: "15",
+    open_hours: "09:00 AM",
+    close_hours: "21:00 PM",
   },
+
   {
     key: "4",
-    id: 4,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
-    avatar: `${logo}`,
+    facility_id: 4,
+    facility_name: "Lê Thanh Nghị",
+    location: "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội",
+    capacity: "150",
+    current_usage: "120",
+    number_of_classroms: "15",
+    open_hours: "09:00 AM",
+    close_hours: "21:00 PM",
   },
 ];
-const TableCourse = () => {
+const CenterTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
@@ -181,70 +169,63 @@ const TableCourse = () => {
   const columns = [
     {
       title: "ID",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "facility_id",
+      key: "facility_id",
       width: "5%",
-      ...getColumnSearchProps("id"),
-    },
-    {
-      title: "Tên Khóa Học",
-      dataIndex: "name_course",
-      key: "name_course",
-      width: "10%",
-      ...getColumnSearchProps("name_course"),
-    },
-    {
-      title: "Mã Khóa Học",
-      dataIndex: "course_code",
-      key: "course_code ",
-      ...getColumnSearchProps("course_code"),
-      width: "10%",
-      // sorter: (a, b) => a.address.length - b.address.length,
-      // sortDirections: ["descend", "ascend"],
-    },
-    {
-      title: "Chuyên Ngành",
-      dataIndex: "category",
-      key: "category",
-      width: "15%",
-      ...getColumnSearchProps("category"),
-    },
-    {
-      title: "Giảng Viên",
-      dataIndex: "instructor",
-      key: "instructor",
-      width: "15%",
-      ...getColumnSearchProps("instructor "),
-    },
-    {
-      title: "Ngày Bắt Đầu",
-      dataIndex: "start_date",
-      key: "start_date",
-      width: "10%",
-      ...getColumnSearchProps("start_date "),
+      ...getColumnSearchProps("facility_id"),
     },
 
     {
-      title: "Ngày Kết Thúc",
-      dataIndex: "end_date",
-      key: "end_date",
+      title: "Tên Cơ Sở",
+      dataIndex: "facility_name",
+      key: "facility_name",
       width: "10%",
-      ...getColumnSearchProps("end_date"),
+      ...getColumnSearchProps("facility_name"),
+    },
+    {
+      title: "Địa Điểm",
+      dataIndex: "location",
+      key: "location",
+      width: "15%",
+      ...getColumnSearchProps("location"),
+    },
+    {
+      title: "Sức Chứa",
+      dataIndex: "capacity",
+      key: "capacity ",
+      ...getColumnSearchProps("capacity"),
+      width: "5%",
     },
 
     {
-      title: "Số Giờ Học Dự Kiến",
-      dataIndex: "duration_hours",
-      key: "duration_hours",
+      title: "Số Lượng Sử Dụng Cơ Sở Hiện Tại",
+      dataIndex: "current_usage",
+      key: "current_usage",
       width: "10%",
-      ...getColumnSearchProps("duration_hours"),
+      ...getColumnSearchProps("current_usage"),
+    },
+
+    {
+      title: "Số Lượng Phòng Học",
+      dataIndex: "number_of_classroms",
+      key: "number_of_classroms",
+      width: "10%",
+      ...getColumnSearchProps("number_of_classroms"),
     },
     {
-      title: "Loại Hình Thức Khóa Học",
-      dataIndex: "course_type",
-      key: "course_type",
-      width: "20%",
-      ...getColumnSearchProps("course_type"),
+      title: "Giờ Mở Cửa",
+      dataIndex: "open_hours",
+      key: "open_hours",
+      width: "10%",
+      ...getColumnSearchProps("open_hours"),
+    },
+
+    {
+      title: "Giờ Đóng Cửa",
+      dataIndex: "close_hours",
+      key: "close_hours",
+      width: "10%",
+      ...getColumnSearchProps("close_hours"),
     },
   ];
 
@@ -257,4 +238,5 @@ const TableCourse = () => {
     />
   );
 };
-export default TableCourse;
+
+export default CenterTable;
