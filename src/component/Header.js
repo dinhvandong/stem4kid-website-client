@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Modal from "./contentDetail/Modal";
 import logo from "..//assets/logo.png";
+import Content2 from "./contentDetail/Content2";
 
 // import { useNavigate } from "react-router-dom";
 // import Modal from "./modal/Modal";
@@ -24,7 +25,7 @@ const Header = (props) => {
         </a>
       </div>
 
-      <button className="hidden md:block md:w-1/6 font-semibold text-2xl hover:text-blue-500 object-cover transform transition-transform hover:scale-110">
+      <button className="button-why-choose hidden md:block md:w-1/6 font-semibold text-2xl hover:text-blue-500 object-cover transform transition-transform hover:scale-110">
         Tại sao chọn Stem4kids
       </button>
       <button className="md:w-1/6 w-1/3 font-semibold text-2xl hover:text-blue-500 object-cover transform transition-transform hover:scale-110">
@@ -46,6 +47,11 @@ const Header = (props) => {
         </button>
         <Modal isOpen={isOpenModal} onClose={closeModal} />
       </div>
+
+      {/* <div ref={scrollRef} id="why-choose">
+        <Content2 />
+      </div> */}
+      {/* <Content2 /> */}
     </div>
   );
 };

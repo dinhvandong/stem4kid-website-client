@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import VideoPlayer from "../videoPlay/VideoPlayer ";
 import NewModal from "./NewModal";
 
@@ -13,7 +13,7 @@ const Content2 = (props) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   return (
-    <div className="flex flex-col items-center">
+    <div className="component-why-choose flex flex-col items-center">
       <div className="flex flex-col md:flex-row bg-[#fce5dd] w-full h-auto ">
         <div className="bg-white w-full md:w-[50vw]">
           <div className="flex items-center flex-col mt-5 gap-5">
