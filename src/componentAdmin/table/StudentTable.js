@@ -7,7 +7,7 @@ const data = [
   {
     key: "1",
     id: 1,
-    avavtar: `${logo}`,
+    avatar: `${logo}`,
     student_name: "Nong Van Trinh",
     email: "trinhlee297@gamil.com",
     phone_number: "0337413702",
@@ -17,9 +17,9 @@ const data = [
   },
 
   {
-    key: "1",
-    id: 1,
-    avavtar: `${logo}`,
+    key: "2",
+    id: 2,
+    avatar: `${logo}`,
     student_name: "Nong Van Trinh",
     email: "trinhlee297@gamil.com",
     phone_number: "0337413702",
@@ -29,9 +29,9 @@ const data = [
   },
 
   {
-    key: "1",
-    id: 1,
-    avavtar: `${logo}`,
+    key: "3",
+    id: 3,
+    avatar: `${logo}`,
     student_name: "Nong Van Trinh",
     email: "trinhlee297@gamil.com",
     phone_number: "0337413702",
@@ -41,9 +41,9 @@ const data = [
   },
 
   {
-    key: "1",
-    id: 1,
-    avavtar: `${logo}`,
+    key: "4",
+    id: 4,
+    avatar: `${logo}`,
     student_name: "Nong Van Trinh",
     email: "trinhlee297@gamil.com",
     phone_number: "0337413702",
@@ -178,7 +178,7 @@ const StudentTable = () => {
     },
     {
       title: "Avatar",
-      dataIndex: "avavtar",
+      dataIndex: "avatar",
       key: "avatar",
       width: "10%",
       render: (avatar) => (
@@ -199,7 +199,7 @@ const StudentTable = () => {
     {
       title: "Email",
       dataIndex: "email",
-      key: "email ",
+      key: "email",
       ...getColumnSearchProps("email"),
       width: "15%",
     },
@@ -230,7 +230,7 @@ const StudentTable = () => {
       title: "Khóa Học",
       dataIndex: "course_id",
       key: "course_id",
-      width: "10%",
+      width: "15%",
       ...getColumnSearchProps("course_id"),
     },
   ];

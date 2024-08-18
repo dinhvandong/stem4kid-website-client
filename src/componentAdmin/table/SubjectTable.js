@@ -2,67 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Popconfirm, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
-import logo from "../../assets/logo.png";
 const data = [
   {
     key: "1",
     id: 1,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
-  },
-  {
-    key: "2",
-    id: 2,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
-  },
-  {
-    key: "3",
-    id: 3,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
-  },
-  {
-    key: "4",
-    id: 4,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
-    avatar: `${logo}`,
+    name: "Lập trình web  ",
+    code: "STEM03",
+    listedPrice: "5.000.000vnd",
+    numberOfLessons: 400,
   },
 ];
-const TableCourse = () => {
+const SubjectTable = () => {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -72,7 +22,7 @@ const TableCourse = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/course/get-all"
+          "http://localhost:8080/api/subject/get-all"
         );
         const jsonData = await response.json();
         setData(jsonData);
@@ -83,6 +33,7 @@ const TableCourse = () => {
 
     fetchData();
   }, []);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -194,10 +145,11 @@ const TableCourse = () => {
         text
       ),
   });
+
   const handleDelete = async (record) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/course/deleteById?id=${record.id}`,
+        `http://localhost:8080/api/subject/deleteById?id=${record.id}`,
         {
           method: "DELETE",
         }
@@ -216,7 +168,7 @@ const TableCourse = () => {
 
   const handleUpdate = async (record) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/course/update`, {
+      const response = await fetch(`http://localhost:8080/api/subject/update`, {
         method: "POST", // Change method to POST as the backend API endpoint uses @PostMapping
         headers: {
           "Content-Type": "application/json",
@@ -244,64 +196,34 @@ const TableCourse = () => {
       ...getColumnSearchProps("id"),
     },
     {
-      title: "Tên Khóa Học",
-      dataIndex: "nameCourse",
-      key: "nameCourse",
+      title: "Tên Khóa Môn Học",
+      dataIndex: "name",
+      key: "name",
       width: "10%",
-      ...getColumnSearchProps("nameCourse"),
+      ...getColumnSearchProps("name"),
     },
     {
-      title: "Mã Khóa Học",
-      dataIndex: "courseCode",
-      key: "courseCode ",
-      ...getColumnSearchProps("courseCode"),
+      title: "Mã Khóa Môn Học",
+      dataIndex: "code",
+      key: "code ",
+      ...getColumnSearchProps("code"),
       width: "10%",
       // sorter: (a, b) => a.address.length - b.address.length,
       // sortDirections: ["descend", "ascend"],
     },
     {
-      title: "Chuyên Ngành",
-      dataIndex: "category",
-      key: "category",
+      title: "Giá Niêm Yết",
+      dataIndex: "listedPrice",
+      key: "listedPrice",
       width: "15%",
-      ...getColumnSearchProps("category"),
+      ...getColumnSearchProps("listedPrice"),
     },
     {
-      title: "Giảng Viên",
-      dataIndex: "instructor",
-      key: "instructor",
+      title: "Số Buổi Học Quy Định",
+      dataIndex: "numberOfLessons",
+      key: "numberOfLessons",
       width: "15%",
-      ...getColumnSearchProps("instructor "),
-    },
-    {
-      title: "Ngày Bắt Đầu",
-      dataIndex: "startDate",
-      key: "startDate",
-      width: "10%",
-      ...getColumnSearchProps("startDate"),
-    },
-
-    {
-      title: "Ngày Kết Thúc",
-      dataIndex: "endDate",
-      key: "endDate",
-      width: "10%",
-      ...getColumnSearchProps("endDate"),
-    },
-
-    {
-      title: "Số Giờ Học Dự Kiến",
-      dataIndex: "durationHours",
-      key: "durationHours",
-      width: "10%",
-      ...getColumnSearchProps("durationHours"),
-    },
-    {
-      title: "Loại Hình Thức Khóa Học",
-      dataIndex: "courseType",
-      key: "courseType",
-      width: "20%",
-      ...getColumnSearchProps("courseType"),
+      ...getColumnSearchProps("numberOfLessons"),
     },
     {
       title: "Action",
@@ -315,11 +237,18 @@ const TableCourse = () => {
             okText="Yes"
             cancelText="No"
           >
-            <Button type="link" danger>
+            <Button
+              type="link"
+              className="bg-red-600 text-black text-base font-semibold"
+            >
               Delete
             </Button>
           </Popconfirm>
-          <Button type="link" onClick={() => handleUpdate(record)}>
+          <Button
+            type="link"
+            className="bg-blue-600 text-black text-base font-semibold"
+            onClick={() => handleUpdate(record)}
+          >
             Update
           </Button>
         </Space>
@@ -336,4 +265,5 @@ const TableCourse = () => {
     />
   );
 };
-export default TableCourse;
+
+export default SubjectTable;

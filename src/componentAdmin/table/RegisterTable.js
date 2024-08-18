@@ -1,68 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Popconfirm, Space, Table } from "antd";
+import { Button, Input, Modal, Popconfirm, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
-import logo from "../../assets/logo.png";
-const data = [
-  {
-    key: "1",
-    id: 1,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
-  },
-  {
-    key: "2",
-    id: 2,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
-  },
-  {
-    key: "3",
-    id: 3,
-    name_course: "Java FullStack",
-    course_code: "ST01",
-    description: "Lớp có máy chiếu",
-    category: "Chuyên ngành thiết kế web",
-    instructor: "Đinh Văn Đông",
-    start_date: "15/08/2023",
-    end_date: "10/05/2024",
-    language: "Tiếng Việt",
-    duration_hours: "7 tháng",
-    course_type: "Học trực tuyến và trực tiếp",
-  },
-  {
-    key: "4",
-    id: 4,
-    name_course: "Thiết kế đồ họa",
-    course_code: "ST02",
-    description: "Lớp học trực tiếp",
-    category: "Chuyên ngành đồ họa",
-    instructor: "Vũ Văn Ước",
-    start_date: "10/01/2023",
-    end_date: "05/10/2024",
-    language: "Tiếng Anh",
-    duration_hours: "9 tháng",
-    course_type: " Học trực tiếp",
-    avatar: `${logo}`,
-  },
-];
-const TableCourse = () => {
+const RegisterTable = () => {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -72,7 +12,7 @@ const TableCourse = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/course/get-all"
+          "http://localhost:8080/api/register-info/get-all"
         );
         const jsonData = await response.json();
         setData(jsonData);
@@ -83,6 +23,7 @@ const TableCourse = () => {
 
     fetchData();
   }, []);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -194,10 +135,11 @@ const TableCourse = () => {
         text
       ),
   });
+
   const handleDelete = async (record) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/course/deleteById?id=${record.id}`,
+        `http://localhost:8080/api/register-info/deleteById?id=${record.id}`,
         {
           method: "DELETE",
         }
@@ -216,13 +158,16 @@ const TableCourse = () => {
 
   const handleUpdate = async (record) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/course/update`, {
-        method: "POST", // Change method to POST as the backend API endpoint uses @PostMapping
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(record), // Send the entire record object for updating
-      });
+      const response = await fetch(
+        `http://localhost:8080/api/register-info/update`,
+        {
+          method: "POST", // Change method to POST as the backend API endpoint uses @PostMapping
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(record), // Send the entire record object for updating
+        }
+      );
 
       if (response.ok) {
         // fetchData(); // Refresh the data after update
@@ -244,64 +189,34 @@ const TableCourse = () => {
       ...getColumnSearchProps("id"),
     },
     {
-      title: "Tên Khóa Học",
-      dataIndex: "nameCourse",
-      key: "nameCourse",
-      width: "10%",
-      ...getColumnSearchProps("nameCourse"),
-    },
-    {
-      title: "Mã Khóa Học",
-      dataIndex: "courseCode",
-      key: "courseCode ",
-      ...getColumnSearchProps("courseCode"),
-      width: "10%",
-      // sorter: (a, b) => a.address.length - b.address.length,
-      // sortDirections: ["descend", "ascend"],
-    },
-    {
-      title: "Chuyên Ngành",
-      dataIndex: "category",
-      key: "category",
+      title: "Họ Và Tên",
+      dataIndex: "fullName",
+      key: "fullName",
       width: "15%",
-      ...getColumnSearchProps("category"),
+      ...getColumnSearchProps("fullName"),
     },
     {
-      title: "Giảng Viên",
-      dataIndex: "instructor",
-      key: "instructor",
+      title: "Số Điện Thoại",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber ",
+      ...getColumnSearchProps("phoneNumber"),
       width: "15%",
-      ...getColumnSearchProps("instructor "),
-    },
-    {
-      title: "Ngày Bắt Đầu",
-      dataIndex: "startDate",
-      key: "startDate",
-      width: "10%",
-      ...getColumnSearchProps("startDate"),
     },
 
     {
-      title: "Ngày Kết Thúc",
-      dataIndex: "endDate",
-      key: "endDate",
-      width: "10%",
-      ...getColumnSearchProps("endDate"),
-    },
-
-    {
-      title: "Số Giờ Học Dự Kiến",
-      dataIndex: "durationHours",
-      key: "durationHours",
-      width: "10%",
-      ...getColumnSearchProps("durationHours"),
-    },
-    {
-      title: "Loại Hình Thức Khóa Học",
-      dataIndex: "courseType",
-      key: "courseType",
+      title: "Địa Chỉ",
+      dataIndex: "address",
+      key: "address",
       width: "20%",
-      ...getColumnSearchProps("courseType"),
+      ...getColumnSearchProps("address"),
+    },
+
+    {
+      title: "Thời Gian Đăng Kí",
+      dataIndex: "timeRegistered",
+      key: "timeRegistered",
+      width: "10%",
+      ...getColumnSearchProps("timeRegistered"),
     },
     {
       title: "Action",
@@ -336,4 +251,5 @@ const TableCourse = () => {
     />
   );
 };
-export default TableCourse;
+
+export default RegisterTable;
