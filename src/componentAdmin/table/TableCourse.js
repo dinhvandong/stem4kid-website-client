@@ -271,7 +271,7 @@ const TableCourse = () => {
       dataIndex: "instructor",
       key: "instructor",
       width: "15%",
-      ...getColumnSearchProps("instructor "),
+      ...getColumnSearchProps("instructor"),
     },
     {
       title: "Ngày Bắt Đầu",
@@ -322,6 +322,10 @@ const TableCourse = () => {
           <Button type="link" onClick={() => handleUpdate(record)}>
             Update
           </Button>
+
+          <Button type="link" onClick={() => handleUpdate(record)}>
+            Add Student
+          </Button>
         </Space>
       ),
     },
@@ -331,7 +335,7 @@ const TableCourse = () => {
     <Table
       columns={columns}
       bordered
-      style={{ borderSpacing: "0", borderCollapse: "collapse" }}
+      style={{ borderSpacing: "0", borderCollapse: "collapse", text: "24px" }}
       dataSource={data}
     />
   );

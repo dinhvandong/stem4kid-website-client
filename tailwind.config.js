@@ -11,6 +11,7 @@ module.exports = {
         background: "#f4f4f4",
         maincolor: "#fec418",
         textmaincolor: "#1068b2",
+        bgsiderBar: "#4e3f6a",
       },
     },
   },

@@ -59,7 +59,7 @@ const SiderBar = () => {
     <div className="flex flex-col text-lg text-white font-medium justify-start">
       {tabs.map((item, index) => {
         const bgColorClass =
-          index === activeTabIndex ? "bg-[#81ecec]" : "bg-transparent";
+          index === activeTabIndex ? "bg-white text-black" : "bg-transparent";
 
         return (
           <div

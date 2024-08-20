@@ -12,6 +12,28 @@ code {
     monospace;
 }
 
+.ant-table-content {
+  background-color: ghostwhite;
+}
+.ant-table-thead {
+  background-color: blue;
+  text-transform: uppercase;
+
+
+}
+
+#control-hooks {
+  text-transform: uppercase;
+  font-size: xx-large;
+  font-weight: bold;
+  max-width: 100%;
+ 
+}
+
+.ant-form {
+  max-width: 100%;
+
+}
 @keyframes zoomOut {
   0% {
     transform: scale(1);

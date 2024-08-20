@@ -12,13 +12,21 @@ import CenterPage from "./pages/CenterPage";
 import RegisterPage from "./pages/RegisterPage";
 import SubjectPage from "./pages/SubjectPage";
 import { Layout } from "./layouts";
+import AddCourse from "./componentAdmin/addInfomation/AddCourse";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/admin"
+          element={
+            <Layout>
+              <AdminPage />
+            </Layout>
+          }
+        />
         <Route
           path="/admin/course"
           element={
@@ -27,6 +35,16 @@ function App() {
             </Layout>
           }
         />
+
+        <Route
+          path="/admin/add/course"
+          element={
+            <Layout>
+              <AddCourse />
+            </Layout>
+          }
+        />
+
         <Route
           path="/admin/subject"
           element={

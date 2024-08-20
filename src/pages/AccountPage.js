@@ -8,7 +8,7 @@ const AccountPage = () => {
     <div className="flex flex-col">
       <div className="w-full h-auto flex">
         <div className="w-[5px] h-screen  border-l-[5px] border-red-700"></div>
-        <div className="w-[100%]">
+        <div className="w-[100%] flex justify-end items-end">
           <AccountTable />
         </div>
       </div>

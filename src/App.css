@@ -27,7 +27,17 @@
 .App-link {
   color: #61dafb;
 }
+.ant-spin-container {
+color: #282c34;
 
+
+font-size: xx-large;
+}
+.ant-table {
+  color: #282c34;
+background: red;
+text-size-adjust: 24px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
