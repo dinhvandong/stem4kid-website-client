@@ -1,204 +1,215 @@
-import React from "react";
-import { Button, DatePicker, Form, Input, Select, Space } from "antd";
-const { Option } = Select;
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
+import { toast } from "react-toastify";
+
 const AddCourse = () => {
-  const [form] = Form.useForm();
-  const onGenderChange = (value) => {
-    //     switch (value) {
-    //       case "male":
-    //         form.setFieldsValue({
-    //           note: "Hi, man!",
-    //         });
-    //         break;
-    //       case "female":
-    //         form.setFieldsValue({
-    //           note: "Hi, lady!",
-    //         });
-    //         break;
-    //       case "other":
-    //         form.setFieldsValue({
-    //           note: "Hi there!",
-    //         });
-    //         break;
-    //       default:
-    //     }
+  const [formData, setFormData] = useState({
+    nameCourse: "",
+    courseCode: "",
+    category: "",
+    instructor: "",
+    startDate: "",
+    endDate: "",
+    durationHours: "",
+    courseType: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const onFinish = (values) => {
-    console.log(values);
-  };
-  const onReset = () => {
-    form.resetFields();
-  };
-  //   const onFill = () => {
-  //     form.setFieldsValue({
-  //       note: "Hello world!",
-  //       gender: "male",
+
+  // const createCourse = async (courseData) => {
+  //   try {
+  //     const response = await fetch("http://localhost:8080/api/course/create", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(courseData),
   //     });
-  //   };
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to create course");
+  //     }
+
+  //     const responseData = await response.json();
+  //     return responseData;
+  //   } catch (error) {
+  //     console.error("Error creating course:", error);
+  //     return null;
+  //   }
+  // };
+
+  // // Example usage of the function
+  // const newCourse = {
+  //   // Provide the necessary course data here
+  // };
+
+  // createCourse(newCourse).then((data) => {
+  //   if (data) {
+  //     console.log("Course created successfully:", data);
+  //   } else {
+  //     console.log("Failed to create course");
+  //   }
+  // });
+
+  const handleSubmit = async (courseData) => {
+    courseData.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8080/api/course/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(courseData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create course");
+      }
+
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error("Error creating course:", error);
+      return null;
+    }
+
+    // try {
+    //   const data = await authService.createCourse(formData);
+    //   console.log("data: ", data);
+    //   toast.success("Đăng kí thành công");
+    //   navigate("/loginEmployer");
+    // } catch (error) {
+    //   toast.error("Đăng kí thất bại");
+    // }
+  };
+
+  const goToCourse = () => {
+    navigate("/admin/course");
+  };
   return (
-    <Form
-      className="text-3xl"
-      {...layout}
-      form={form}
-      name="control-hooks"
-      onFinish={onFinish}
-      style={{
-        maxWidth: 600,
-      }}
-    >
-      <Form.Item
-        name="note"
-        label="Tên Khóa Học"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+    <div className="h-screen w-full flex justify-center items-center text-2xl ">
+      <form onSubmit={handleSubmit} className=" w-[60%] bg-slate-50 rounded-lg">
+        <h1 className="text-[26px] font-bold my-3 text-center">
+          Thêm Khóa Học
+        </h1>
 
-      <Form.Item
-        name="code"
-        label="Mã Khóa Học"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        <div>
+          <label className="block font-medium text-gray-700 text-2xl">
+            Tên Khóa Học<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="nameCourse"
+            value={formData.nameCourse}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
 
-      <Form.Item
-        name="category"
-        label="Chuyên Ngành"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Mã Khóa Học<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="courseCode"
+            value={formData.courseCode}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
 
-      <Form.Item
-        name="instructor"
-        label="Giảng Viên"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Chuyên Ngành<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Giảng Viên<span className="text-red-500">*</span>
+          </label>
 
-      <Form.Item
-        name="startDate"
-        label="Ngày Bắt Đầu"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
+          <input
+            type="text"
+            name="instructor"
+            value={formData.instructor}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Ngày Bắt Đầu<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="date"
+            name="startDate"
+            value={formData.startDate}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Ngày Kết Thúc<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="date"
+            name="endDate"
+            value={formData.endDate}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Số Giờ Học Dự Kiến<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="durationHours"
+            value={formData.durationHours}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
 
-      <Form.Item
-        name="endDate"
-        label="Ngày Kết Thúc"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
-
-      <Form.Item
-        name="durationHours"
-        label="Số Giờ Học Dự Kiến"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="courseType"
-        label="Loại Hình Thức Khóa Học"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Select
-          placeholder="Select a option and change input text above"
-          onChange={onGenderChange}
-          allowClear
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Loại Hình Thức Khóa Học<span className="text-red-500">*</span>
+          </label>
+          <select
+            name="courseType"
+            value={formData.courseType}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          >
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+            Add specific options here
+          </select>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-orange-400 text-white p-2 rounded hover:bg-orange-700 text-2xl"
+          onClick={goToCourse}
         >
-          <Option value="online">Online</Option>
-          <Option value="offline">Offline</Option>
-        </Select>
-      </Form.Item>
-
-      {/* <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues.gender !== currentValues.gender
-        }
-      > */}
-      {/* {({ getFieldValue }) =>
-          getFieldValue("gender") === "other" ? (
-            <Form.Item
-              name="customizeGender"
-              label="Customize Gender"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          ) : null
-        } */}
-      {/* </Form.Item> */}
-      <Form.Item {...tailLayout}>
-        <Space>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button htmlType="button" onClick={onReset}>
-            Reset
-          </Button>
-          {/* <Button type="link" htmlType="button" onClick={onFill}>
-            Fill form
-          </Button> */}
-        </Space>
-      </Form.Item>
-    </Form>
+          Thêm Ngay
+        </button>
+      </form>
+    </div>
   );
 };
+
 export default AddCourse;

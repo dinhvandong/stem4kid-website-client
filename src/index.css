@@ -24,14 +24,16 @@ code {
 
 #control-hooks {
   text-transform: uppercase;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bold;
-  max-width: 100%;
+  row-gap: 10;
+  /* max-width: 100%; */
  
 }
 
-.ant-form {
+.ant-form-horizontal {
   max-width: 100%;
+  text-transform: lowercase;
 
 }
 @keyframes zoomOut {
