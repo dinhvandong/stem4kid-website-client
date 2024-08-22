@@ -1,6 +1,4 @@
 import React from "react";
-import HeaderAdmin from "../componentAdmin/HeaderAdmin";
-import SiderBar from "../componentAdmin/SiderBar";
 import TableCourse from "../componentAdmin/table/TableCourse";
 import { useNavigate } from "react-router-dom";
 

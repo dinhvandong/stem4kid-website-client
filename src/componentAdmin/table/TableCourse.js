@@ -3,6 +3,8 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Popconfirm, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
 import logo from "../../assets/logo.png";
+import UpdateCourseModal from "../updateInfomation/UpdateCourseModal";
+import { useNavigate } from "react-router-dom";
 const data = [
   {
     key: "1",
@@ -67,6 +69,19 @@ const TableCourse = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  // const openModal = () => {
+  //   setIsOpenModal(true);
+  // };
+
+  // const closeModal = () => {
+  //   setIsOpenModal(false);
+  // };
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+  const navigate = useNavigate();
+  const goToUpdateCourse = () => {
+    navigate("/admin/update/course");
+  };
+
   useEffect(() => {
     // Fetch data from the backend API
     const fetchData = async () => {
@@ -319,9 +334,10 @@ const TableCourse = () => {
               Delete
             </Button>
           </Popconfirm>
-          <Button type="link" onClick={() => handleUpdate(record)}>
+          <Button type="link" onClick={goToUpdateCourse}>
             Update
           </Button>
+          {/* <UpdateCourseModal isOpen={isOpenModal} onClose={closeModal} /> */}
 
           <Button type="link" onClick={() => handleUpdate(record)}>
             Add Student

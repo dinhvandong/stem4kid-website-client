@@ -13,6 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 import SubjectPage from "./pages/SubjectPage";
 import { Layout } from "./layouts";
 import AddCourse from "./componentAdmin/addInfomation/AddCourse";
+import UpdateCourseModal from "./componentAdmin/updateInfomation/UpdateCourseModal";
 
 function App() {
   return (
@@ -41,6 +42,15 @@ function App() {
           element={
             <Layout>
               <AddCourse />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/admin/update/course"
+          element={
+            <Layout>
+              <UpdateCourseModal />
             </Layout>
           }
         />

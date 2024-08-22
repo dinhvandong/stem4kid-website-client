@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AddCourse = () => {
+const UpdateCourseModal = () => {
   const [formData, setFormData] = useState({
     nameCourse: "",
     courseCode: "",
@@ -101,7 +101,7 @@ const AddCourse = () => {
     <div className="h-screen w-full flex justify-center items-center text-2xl ">
       <form onSubmit={handleSubmit} className=" w-[60%] bg-slate-50 rounded-lg">
         <h1 className="text-[26px] font-bold my-3 text-center">
-          Thêm Khóa Học
+          Cập Nhật Khóa Học
         </h1>
 
         <div>
@@ -212,11 +212,11 @@ const AddCourse = () => {
           className="w-full bg-orange-400 text-white p-2 rounded hover:bg-orange-700 text-2xl"
           onClick={() => handleSubmit()}
         >
-          Thêm Ngay
+          Cập Nhật Ngay
         </button>
       </form>
     </div>
   );
 };
 
-export default AddCourse;
+export default UpdateCourseModal;
