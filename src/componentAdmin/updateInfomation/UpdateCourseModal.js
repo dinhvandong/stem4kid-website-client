@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const UpdateCourseModal = () => {
-  const [formData, setFormData] = useState({
+const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
+  const [updateData, setUpdateData] = useState({
     nameCourse: "",
     courseCode: "",
     category: "",
@@ -13,93 +13,141 @@ const UpdateCourseModal = () => {
     courseType: "",
   });
 
-  const handleChangeNameCourse = (e) => {
-    const { value } = e?.target;
-    setFormData({
-      ...formData,
-      nameCourse: value,
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const handleChangeCourseCode = (e) => {
-    const { value } = e.target;
+  // const handleChangeNameCourse = (e) => {
+  //   const { value } = e?.target;
+  //   setFormData({
+  //     ...updateData,
+  //     nameCourse: value,
+  //   });
+  // };
 
-    setFormData({
-      ...formData,
-      courseCode: value,
-    });
-  };
+  // const handleChangeCourseCode = (e) => {
+  //   const { value } = e.target;
 
-  const handleChangeCategory = (e) => {
-    const { value } = e.target;
-    setFormData({
-      ...formData,
-      category: value,
-    });
-  };
+  //   setFormData({
+  //     ...updateData,
+  //     courseCode: value,
+  //   });
+  // };
 
-  const handleChangeInstructor = (e) => {
-    const { value } = e?.target;
-    setFormData({
-      ...formData,
-      instructor: value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { value } = e.target;
+  //   setFormData({
+  //     ...updateData,
+  //     category: value,
+  //   });
+  // };
 
-  const handleChangeStartDate = (e) => {
-    const { value } = e.target;
+  // const handleChangeInstructor = (e) => {
+  //   const { value } = e?.target;
+  //   setFormData({
+  //     ...updateData,
+  //     instructor: value,
+  //   });
+  // };
 
-    setFormData({
-      ...formData,
-      startDate: value,
-    });
-  };
+  // const handleChangeStartDate = (e) => {
+  //   const { value } = e.target;
 
-  const handleChangeEndDate = (e) => {
-    const { value } = e.target;
-    setFormData({
-      ...formData,
-      endDate: value,
-    });
-  };
+  //   setFormData({
+  //     ...updateData,
+  //     startDate: value,
+  //   });
+  // };
 
-  const handleChangeDurationHours = (e) => {
-    const { value } = e.target;
+  // const handleChangeEndDate = (e) => {
+  //   const { value } = e.target;
+  //   setFormData({
+  //     ...updateData,
+  //     endDate: value,
+  //   });
+  // };
 
-    setFormData({
-      ...formData,
-      durationHours: value,
-    });
-  };
+  // const handleChangeDurationHours = (e) => {
+  //   const { value } = e.target;
 
-  const handleChangeCourseType = (e) => {
-    const { value } = e.target;
-    setFormData({
-      ...formData,
-      courseType: value,
-    });
-  };
+  //   setFormData({
+  //     ...updateData,
+  //     durationHours: value,
+  //   });
+  // };
+
+  // const handleChangeCourseType = (e) => {
+  //   const { value } = e.target;
+  //   setFormData({
+  //     ...updateData,
+  //     courseType: value,
+  //   });
+  // };
   const navigate = useNavigate();
   const goToCourse = () => {
     navigate("/admin/course");
   };
-  const handleSubmit = async () => {
-    const response = await fetch("http://localhost:8080/api/course/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+  // const handleSubmit = async () => {
+  //   const response = await fetch("http://localhost:8080/api/course/create", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(updateData),
+  //   });
 
-    const data = await response.json();
-    goToCourse();
-    console.log(data);
+  //   const data = await response.json();
+  //   goToCourse();
+  //   console.log(data);
+  // };
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    console.log(updateData);
+    onUpdate({
+      ...updateData,
+      // jobAddress: updateData.jobAddress,
+      // careerJob: updateData.careerJob,
+    });
   };
+  useEffect(() => {
+    if (course) {
+      setUpdateData({
+        nameCourse: course.nameCourse,
+        courseCode: course.courseCode,
+        category: course.category,
+        instructor: course.instructor,
+        startDate: course.startDate,
+        endDate: course.endDate,
+        durationHours: course.durationHours,
+        courseType: course.courseType,
+      });
+    }
+  }, [course]);
+
+  if (!isOpen) return null;
 
   return (
-    <div className="h-screen w-full flex justify-center items-center text-2xl ">
-      <form onSubmit={handleSubmit} className=" w-[60%] bg-slate-50 rounded-lg">
+    <div
+      className="h-screen w-full flex justify-center items-center text-2xl"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 10,
+      }}
+    >
+      <div className="w-full h-full bg-black opacity-50 z-10"></div>
+      <form
+        onSubmit={handleSubmit}
+        className=" w-[60%] bg-white rounded-lg z-20 absolute p-4"
+        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+      >
         <h1 className="text-[26px] font-bold my-3 text-center">
           Cập Nhật Khóa Học
         </h1>
@@ -111,8 +159,8 @@ const UpdateCourseModal = () => {
           <input
             type="text"
             name="nameCourse"
-            value={formData.nameCourse}
-            onChange={handleChangeNameCourse}
+            value={updateData.nameCourse}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -124,8 +172,8 @@ const UpdateCourseModal = () => {
           <input
             type="text"
             name="courseCode"
-            value={formData.courseCode}
-            onChange={handleChangeCourseCode}
+            value={updateData.courseCode}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -137,8 +185,8 @@ const UpdateCourseModal = () => {
           <input
             type="text"
             name="category"
-            value={formData.category}
-            onChange={handleChangeCategory}
+            value={updateData.category}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -150,8 +198,8 @@ const UpdateCourseModal = () => {
           <input
             type="text"
             name="instructor"
-            value={formData.instructor}
-            onChange={handleChangeInstructor}
+            value={updateData.instructor}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -162,8 +210,8 @@ const UpdateCourseModal = () => {
           <input
             type="date"
             name="startDate"
-            value={formData.startDate}
-            onChange={handleChangeStartDate}
+            value={updateData.startDate}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -174,8 +222,8 @@ const UpdateCourseModal = () => {
           <input
             type="date"
             name="endDate"
-            value={formData.endDate}
-            onChange={handleChangeEndDate}
+            value={updateData.endDate}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -186,8 +234,8 @@ const UpdateCourseModal = () => {
           <input
             type="text"
             name="durationHours"
-            value={formData.durationHours}
-            onChange={handleChangeDurationHours}
+            value={updateData.durationHours}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
@@ -198,13 +246,13 @@ const UpdateCourseModal = () => {
           </label>
           <select
             name="courseType"
-            value={formData.courseType}
-            onChange={handleChangeCourseType}
+            value={updateData.courseType}
+            onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           >
             <option value="Online">Online</option>
             <option value="Offline">Offline</option>
-            Add specific options here
+            {/* Add specific options here */}
           </select>
         </div>
         <button

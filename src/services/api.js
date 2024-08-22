@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const ROOT_URL = "150.95.108.21";
+export const ROOT_URL = "localhost";
 export const API_URL_IMAGE = `http://${ROOT_URL}:8080/api/images/`;
 
 const API_URL = `http://${ROOT_URL}:8080/api`; // Replace with your API URL

@@ -1,16 +1,16 @@
 import api from "./axiosClient";
 
-const END_POINT = "/jobs";
+const END_POINT = "/course";
 
-const jobService = {
+const courseService = {
   getAll() {
-    return api.get(`${END_POINT}/findAll`);
+    return api.get(`${END_POINT}/get-all`);
   },
   post(body, id) {
-    return api.post(`${END_POINT}/postJob?employerId=${id}`, body);
+    return api.post(`${END_POINT}/course?${id}`, body);
   },
   update(id, body) {
-    return api.put(`${END_POINT}/${id}`, body);
+    return api.put(`${END_POINT}/update/${id}`, body);
   },
   delete(id) {
     return api.delete(`${END_POINT}/${id}`);
@@ -29,4 +29,4 @@ const jobService = {
   },
 };
 
-export default jobService;
+export default courseService;

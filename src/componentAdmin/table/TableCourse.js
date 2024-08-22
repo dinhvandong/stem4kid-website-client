@@ -5,6 +5,8 @@ import Highlighter from "react-highlight-words";
 import logo from "../../assets/logo.png";
 import UpdateCourseModal from "../updateInfomation/UpdateCourseModal";
 import { useNavigate } from "react-router-dom";
+import courseService from "../../services/courseService";
+import { toast } from "react-toastify";
 const data = [
   {
     key: "1",
@@ -65,10 +67,77 @@ const data = [
   },
 ];
 const TableCourse = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const [data, setData] = useState([]);
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+  // const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+  const [itemId, setItemId] = useState(null);
+  const [courseDataUpdate, setCourseDataUpdate] = useState({});
+
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+
+  // const handleOpenDeleteModal = (id) => {
+  //   setItemId(id);
+  //   setIsModalDeleteOpen(true);
+  // };
+
+  // const handleCloseDeleteModal = () => {
+  //   setIsModalDeleteOpen(false);
+  // };
+
+  const handleOpenUpdateModal = (course) => {
+    setCourseDataUpdate(course);
+    setIsModalUpdateOpen(true);
+  };
+
+  const handleCloseUpdateModal = () => {
+    setIsModalUpdateOpen(false);
+  };
+
+  const handleUpdate = async (updateData) => {
+    try {
+      await courseService.update(courseDataUpdate.id, {
+        ...courseDataUpdate,
+        ...updateData,
+      });
+      toast.success("Cập nhật thành công");
+      setIsModalUpdateOpen(false);
+      getData();
+    } catch (error) {
+      toast.error("Cập nhật thất bại");
+      console.error("Error updating item", error);
+    }
+  };
+
+  // const handleConfirmDelete = async () => {
+  //   try {
+  //     await courseService.delete(itemId);
+  //     getData();
+  //     toast.success("Xóa thành công");
+  //     setIsModalDeleteOpen(false);
+  //   } catch (error) {
+  //     toast.error("Xóa thất bại");
+
+  //     console.error("đã có lỗi", error);
+  //   }
+  // };
+
+  const getData = async () => {
+    try {
+      const response = await courseService.getAll();
+      setData(response);
+    } catch (error) {
+      console.log("có lỗi...", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   // const openModal = () => {
   //   setIsOpenModal(true);
   // };
@@ -82,22 +151,6 @@ const TableCourse = () => {
     navigate("/admin/update/course");
   };
 
-  useEffect(() => {
-    // Fetch data from the backend API
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8080/api/course/get-all"
-        );
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -229,26 +282,26 @@ const TableCourse = () => {
     }
   };
 
-  const handleUpdate = async (record) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/course/update`, {
-        method: "POST", // Change method to POST as the backend API endpoint uses @PostMapping
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(record), // Send the entire record object for updating
-      });
+  // const handleUpdate = async (record) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/api/course/update`, {
+  //       method: "POST", // Change method to POST as the backend API endpoint uses @PostMapping
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(record), // Send the entire record object for updating
+  //     });
 
-      if (response.ok) {
-        // fetchData(); // Refresh the data after update
-        console.log("Record updated successfully");
-      } else {
-        console.error("Failed to update record");
-      }
-    } catch (error) {
-      console.error("Error updating record: ", error);
-    }
-  };
+  //     if (response.ok) {
+  //       // fetchData(); // Refresh the data after update
+  //       console.log("Record updated successfully");
+  //     } else {
+  //       console.error("Failed to update record");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating record: ", error);
+  //   }
+  // };
 
   const columns = [
     {
@@ -334,7 +387,14 @@ const TableCourse = () => {
               Delete
             </Button>
           </Popconfirm>
-          <Button type="link" onClick={goToUpdateCourse}>
+
+          <Button
+            type="link"
+            onClick={() => {
+              setCourseDataUpdate(record);
+              setShowUpdateModal(true);
+            }}
+          >
             Update
           </Button>
           {/* <UpdateCourseModal isOpen={isOpenModal} onClose={closeModal} /> */}
@@ -348,12 +408,23 @@ const TableCourse = () => {
   ];
 
   return (
-    <Table
-      columns={columns}
-      bordered
-      style={{ borderSpacing: "0", borderCollapse: "collapse", text: "24px" }}
-      dataSource={data}
-    />
+    <>
+      <Table
+        columns={columns}
+        bordered
+        style={{ borderSpacing: "0", borderCollapse: "collapse", text: "24px" }}
+        dataSource={data}
+      />
+      <UpdateCourseModal
+        isOpen={showUpdateModal}
+        onClose={() => setShowUpdateModal(false)}
+        onUpdate={(e) => {
+          handleUpdate(e);
+          setShowUpdateModal(false);
+        }}
+        course={courseDataUpdate}
+      />
+    </>
   );
 };
 export default TableCourse;

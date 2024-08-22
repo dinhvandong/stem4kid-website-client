@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -13,7 +12,6 @@ import RegisterPage from "./pages/RegisterPage";
 import SubjectPage from "./pages/SubjectPage";
 import { Layout } from "./layouts";
 import AddCourse from "./componentAdmin/addInfomation/AddCourse";
-import UpdateCourseModal from "./componentAdmin/updateInfomation/UpdateCourseModal";
 
 function App() {
   return (
@@ -45,16 +43,6 @@ function App() {
             </Layout>
           }
         />
-
-        <Route
-          path="/admin/update/course"
-          element={
-            <Layout>
-              <UpdateCourseModal />
-            </Layout>
-          }
-        />
-
         <Route
           path="/admin/subject"
           element={
