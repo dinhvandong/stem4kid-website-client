@@ -12,6 +12,7 @@ import RegisterPage from "./pages/RegisterPage";
 import SubjectPage from "./pages/SubjectPage";
 import { Layout } from "./layouts";
 import AddCourse from "./componentAdmin/addInfomation/AddCourse";
+import AddCenter from "./componentAdmin/addInfomation/AddCenter";
 
 function App() {
   return (
@@ -96,6 +97,15 @@ function App() {
           element={
             <Layout>
               <CenterPage />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/admin/add/center"
+          element={
+            <Layout>
+              <AddCenter />
             </Layout>
           }
         />

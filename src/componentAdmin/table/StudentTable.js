@@ -44,12 +44,12 @@ const data = [
     key: "4",
     id: 4,
     avatar: `${logo}`,
-    student_name: "Nong Van Trinh",
+    studentName: "Nong Van Trinh",
     email: "trinhlee297@gamil.com",
-    phone_number: "0337413702",
+    phoneNumber: "0337413702",
     address: "Hoang Mai, Thanh Xuan Ha Noi",
-    enrollment_date: "15/08/2023",
-    course_id: "1",
+    enrollmentDate: "15/08/2023",
+    // course_id: "1",
   },
 ];
 const StudentTable = () => {
@@ -191,10 +191,10 @@ const StudentTable = () => {
     },
     {
       title: "Họ Và Tên",
-      dataIndex: "student_name",
-      key: "student_name",
+      dataIndex: "studentName",
+      key: "studentName",
       width: "15%",
-      ...getColumnSearchProps("student_name"),
+      ...getColumnSearchProps("studentName"),
     },
     {
       title: "Email",
@@ -205,10 +205,10 @@ const StudentTable = () => {
     },
     {
       title: "Số Điện Thoại",
-      dataIndex: "phone_number",
-      key: "phone_number",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
       width: "15%",
-      ...getColumnSearchProps("phone_number"),
+      ...getColumnSearchProps("phoneNumber"),
     },
 
     {
@@ -220,19 +220,19 @@ const StudentTable = () => {
     },
     {
       title: "Ngày Đăng Kí",
-      dataIndex: "enrollment_date",
-      key: "enrollment_date",
+      dataIndex: "enrollmentDate",
+      key: "enrollmentDate",
       width: "10%",
-      ...getColumnSearchProps("start_date "),
+      ...getColumnSearchProps("enrollmentDate"),
     },
 
-    {
-      title: "Khóa Học",
-      dataIndex: "course_id",
-      key: "course_id",
-      width: "15%",
-      ...getColumnSearchProps("course_id"),
-    },
+    // {
+    //   title: "Khóa Học",
+    //   dataIndex: "course_id",
+    //   key: "course_id",
+    //   width: "15%",
+    //   ...getColumnSearchProps("course_id"),
+    // },
   ];
 
   return (

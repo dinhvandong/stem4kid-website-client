@@ -1,7 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table } from "antd";
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
+import centerService from "../../services/centerService";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import UpdateCenterModal from "../updateInfomation/UpdateCenterModal";
 const data = [
   {
     key: "1",
@@ -40,20 +44,96 @@ const data = [
 
   {
     key: "4",
-    facility_id: 4,
-    facility_name: "Lê Thanh Nghị",
+    id: 4,
+    facilityName: "Lê Thanh Nghị",
     location: "19 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội",
     capacity: "150",
-    current_usage: "120",
-    number_of_classroms: "15",
-    open_hours: "09:00 AM",
-    close_hours: "21:00 PM",
+    currentUsage: "120",
+    numberOfClassrooms: "15",
+    openHours: "09:00 AM",
+    closeHours: "21:00 PM",
   },
 ];
 const CenterTable = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const [data, setData] = useState([]);
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+  // const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+  const [itemId, setItemId] = useState(null);
+  const [centerDataUpdate, setCenterDataUpdate] = useState({});
+
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+
+  // const handleOpenDeleteModal = (id) => {
+  //   setItemId(id);
+  //   setIsModalDeleteOpen(true);
+  // };
+
+  // const handleCloseDeleteModal = () => {
+  //   setIsModalDeleteOpen(false);
+  // };
+
+  const handleOpenUpdateModal = (center) => {
+    setCenterDataUpdate(center);
+    setIsModalUpdateOpen(true);
+  };
+
+  const handleCloseUpdateModal = () => {
+    setIsModalUpdateOpen(false);
+  };
+
+  const handleUpdate = async (updateData) => {
+    try {
+      await centerService.update(centerDataUpdate.id, {
+        ...centerDataUpdate,
+        ...updateData,
+      });
+      toast.success("Cập nhật thành công");
+      setIsModalUpdateOpen(false);
+      getData();
+    } catch (error) {
+      toast.error("Cập nhật thất bại");
+      console.error("Error updating item", error);
+    }
+  };
+
+  // const handleConfirmDelete = async () => {
+  //   try {
+  //     await courseService.delete(itemId);
+  //     getData();
+  //     toast.success("Xóa thành công");
+  //     setIsModalDeleteOpen(false);
+  //   } catch (error) {
+  //     toast.error("Xóa thất bại");
+
+  //     console.error("đã có lỗi", error);
+  //   }
+  // };
+
+  const getData = async () => {
+    try {
+      const response = await centerService.getAll();
+      setData(response);
+    } catch (error) {
+      console.log("có lỗi...", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // const openModal = () => {
+  //   setIsOpenModal(true);
+  // };
+
+  // const closeModal = () => {
+  //   setIsOpenModal(false);
+  // };
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -166,22 +246,43 @@ const CenterTable = () => {
       ),
   });
 
+  const handleDelete = async (record) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/center/deleteById?id=${record.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        setData(data.filter((item) => item.id !== record.id));
+        console.log("Record deleted successfully");
+      } else {
+        console.error("Failed to delete record");
+      }
+    } catch (error) {
+      console.error("Error deleting record: ", error);
+    }
+  };
+
   const columns = [
     {
       title: "ID",
-      dataIndex: "facility_id",
-      key: "facility_id",
+      dataIndex: "id",
+      key: "id",
       width: "5%",
-      ...getColumnSearchProps("facility_id"),
+      ...getColumnSearchProps("id"),
     },
 
     {
       title: "Tên Cơ Sở",
-      dataIndex: "facility_name",
-      key: "facility_name",
+      dataIndex: "facilityName",
+      key: "facilityName",
       width: "10%",
-      ...getColumnSearchProps("facility_name"),
+      ...getColumnSearchProps("facilityName"),
     },
+
     {
       title: "Địa Điểm",
       dataIndex: "location",
@@ -199,43 +300,87 @@ const CenterTable = () => {
 
     {
       title: "Số Lượng Sử Dụng Cơ Sở Hiện Tại",
-      dataIndex: "current_usage",
-      key: "current_usage",
+      dataIndex: "currentUsage",
+      key: "currentUsage",
       width: "10%",
-      ...getColumnSearchProps("current_usage"),
+      ...getColumnSearchProps("currentUsage"),
     },
 
     {
       title: "Số Lượng Phòng Học",
-      dataIndex: "number_of_classroms",
-      key: "number_of_classroms",
+      dataIndex: "numberOfClassrooms",
+      key: "numberOfClassrooms",
       width: "10%",
-      ...getColumnSearchProps("number_of_classroms"),
+      ...getColumnSearchProps("numberOfClassrooms"),
     },
     {
       title: "Giờ Mở Cửa",
-      dataIndex: "open_hours",
-      key: "open_hours",
+      dataIndex: "openHours",
+      key: "openHours",
       width: "10%",
-      ...getColumnSearchProps("open_hours"),
+      ...getColumnSearchProps("openHours"),
     },
 
     {
       title: "Giờ Đóng Cửa",
-      dataIndex: "close_hours",
-      key: "close_hours",
+      dataIndex: "closeHours",
+      key: "closeHours",
       width: "10%",
-      ...getColumnSearchProps("close_hours"),
+      ...getColumnSearchProps("closeHours"),
+    },
+    {
+      title: "Action",
+      key: "action",
+      width: "10%",
+      render: (text, record) => (
+        <Space size="middle">
+          <Popconfirm
+            title="Are you sure you want to delete this record?"
+            onConfirm={() => handleDelete(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="link" danger>
+              Delete
+            </Button>
+          </Popconfirm>
+
+          <Button
+            type="link"
+            onClick={() => {
+              setCenterDataUpdate(record);
+              setShowUpdateModal(true);
+            }}
+          >
+            Update
+          </Button>
+
+          <Button type="link" onClick={() => handleUpdate(record)}>
+            Add Student
+          </Button>
+        </Space>
+      ),
     },
   ];
 
   return (
-    <Table
-      columns={columns}
-      bordered
-      style={{ borderSpacing: "0", borderCollapse: "collapse" }}
-      dataSource={data}
-    />
+    <>
+      <Table
+        columns={columns}
+        bordered
+        style={{ borderSpacing: "0", borderCollapse: "collapse", text: "24px" }}
+        dataSource={data}
+      />
+      <UpdateCenterModal
+        isOpen={showUpdateModal}
+        onClose={() => setShowUpdateModal(false)}
+        onUpdate={(e) => {
+          handleUpdate(e);
+          setShowUpdateModal(false);
+        }}
+        course={centerDataUpdate}
+      />
+    </>
   );
 };
 

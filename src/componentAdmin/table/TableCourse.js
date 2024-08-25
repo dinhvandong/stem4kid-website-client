@@ -67,7 +67,6 @@ const data = [
   },
 ];
 const TableCourse = () => {
-  // const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
@@ -281,27 +280,6 @@ const TableCourse = () => {
       console.error("Error deleting record: ", error);
     }
   };
-
-  // const handleUpdate = async (record) => {
-  //   try {
-  //     const response = await fetch(`http://localhost:8080/api/course/update`, {
-  //       method: "POST", // Change method to POST as the backend API endpoint uses @PostMapping
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(record), // Send the entire record object for updating
-  //     });
-
-  //     if (response.ok) {
-  //       // fetchData(); // Refresh the data after update
-  //       console.log("Record updated successfully");
-  //     } else {
-  //       console.error("Failed to update record");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error updating record: ", error);
-  //   }
-  // };
 
   const columns = [
     {

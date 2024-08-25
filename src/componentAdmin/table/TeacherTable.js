@@ -39,14 +39,14 @@ const data = [
   },
   {
     key: "4",
-    intructor_id: 4,
+    id: 4,
     avavtar: `${logo}`,
-    intructor_name: "Dinh Van Dong",
+    instructorName: "Dinh Van Dong",
     email: "dinhvandong12.com",
-    phone_number: "0337444702",
+    phoneNumber: "0337444702",
     address: "Hoang Mai, Thanh Xuan Ha Noi",
     department: "Java",
-    course_taught: "Railway78",
+    courseTaught: "Railway78",
   },
 ];
 const TeacherTable = () => {
@@ -188,11 +188,12 @@ const TeacherTable = () => {
     },
     {
       title: "Họ Và Tên",
-      dataIndex: "intructor_name",
-      key: "intructor_name",
+      dataIndex: "instructorName",
+      key: "instructorName",
       width: "15%",
-      ...getColumnSearchProps("intructor_name"),
+      ...getColumnSearchProps("instructorName"),
     },
+
     {
       title: "Email",
       dataIndex: "email",
@@ -202,10 +203,10 @@ const TeacherTable = () => {
     },
     {
       title: "Số Điện Thoại",
-      dataIndex: "phone_number",
-      key: "phone_number",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
       width: "15%",
-      ...getColumnSearchProps("phone_number"),
+      ...getColumnSearchProps("phoneNumber"),
     },
 
     {
@@ -225,10 +226,10 @@ const TeacherTable = () => {
 
     {
       title: "Khóa Học Đã Giảng",
-      dataIndex: "course_taught",
-      key: "course_taught",
+      dataIndex: "courseTaught",
+      key: "courseTaught",
       width: "10%",
-      ...getColumnSearchProps("course_taught"),
+      ...getColumnSearchProps("courseTaught"),
     },
   ];
 

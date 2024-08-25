@@ -38,12 +38,12 @@ const data = [
   {
     key: "4",
     record_id: 4,
-    transaction_date: "10/10/2023",
+    transactionDate: "10/10/2023",
     description: "Đã chuyển khoản trước 1 nửa số tiền học",
     amount: "3.000.000vnd",
     category: "Khóa Java FullStack",
-    transaction_type: "Thu Tiền Học Phí",
-    account_id: "1",
+    transactionType: "Thu Tiền Học Phí",
+    // account_id: "1",
   },
 ];
 const FinanceTable = () => {
@@ -165,18 +165,19 @@ const FinanceTable = () => {
   const columns = [
     {
       title: "ID",
-      dataIndex: "record_id",
-      key: "record_id",
+      dataIndex: "id",
+      key: "id",
       width: "5%",
-      ...getColumnSearchProps("record_id"),
+      ...getColumnSearchProps("id"),
     },
     {
       title: "Ngày Giao Dịch",
-      dataIndex: "transaction_date",
-      key: "transaction_date",
+      dataIndex: "transactionDate",
+      key: "transactionDate",
       width: "10%",
-      ...getColumnSearchProps("transaction_date"),
+      ...getColumnSearchProps("transactionDate"),
     },
+
     {
       title: "Mô Tả",
       dataIndex: "description",
@@ -202,18 +203,18 @@ const FinanceTable = () => {
 
     {
       title: "Loại Giao Dịch",
-      dataIndex: "transaction_type",
-      key: "transaction_type",
+      dataIndex: "transactionType",
+      key: "transactionType",
       width: "10%",
-      ...getColumnSearchProps("transaction_type"),
+      ...getColumnSearchProps("transactionType"),
     },
-    {
-      title: "Tài Khoản Liên Kết",
-      dataIndex: "account_id",
-      key: "account_id",
-      width: "10%",
-      ...getColumnSearchProps("account_id"),
-    },
+    // {
+    //   title: "Tài Khoản Liên Kết",
+    //   dataIndex: "account_id",
+    //   key: "account_id",
+    //   width: "10%",
+    //   ...getColumnSearchProps("account_id"),
+    // },
   ];
 
   return (

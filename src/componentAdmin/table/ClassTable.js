@@ -46,16 +46,16 @@ const data = [
 
   {
     key: "4",
-    class_id: 4,
-    class_name: "Railway78",
-    course_id: "1",
+    id: 4,
+    className: "Railway78",
+    // course_id: "1",
     instructor: "Dinh Van Dong",
-    start_date: "15/07/2023",
-    end_date: "02/02/2024",
+    startDate: "15/07/2023",
+    endDate: "02/02/2024",
     room: "London",
     schedule: "2/4/6",
     capacity: "20",
-    current_enrollment: "15",
+    currentEnrollment: "15",
   },
 ];
 const ClassTable = () => {
@@ -177,25 +177,25 @@ const ClassTable = () => {
   const columns = [
     {
       title: "ID",
-      dataIndex: "class_id",
-      key: "class_id",
+      dataIndex: "id",
+      key: "id",
       width: "5%",
-      ...getColumnSearchProps("class_id"),
+      ...getColumnSearchProps("id"),
     },
     {
       title: "Tên Lớp Học",
-      dataIndex: "class_name",
-      key: "class_name",
+      dataIndex: "className",
+      key: "className",
       width: "10%",
-      ...getColumnSearchProps("class_name"),
+      ...getColumnSearchProps("className"),
     },
-    {
-      title: "ID Khóa Học",
-      dataIndex: "course_id",
-      key: "course_id",
-      width: "5%",
-      ...getColumnSearchProps("course_id"),
-    },
+    // {
+    //   title: "ID Khóa Học",
+    //   dataIndex: "course_id",
+    //   key: "course_id",
+    //   width: "5%",
+    //   ...getColumnSearchProps("course_id"),
+    // },
     {
       title: "Giảng Viên",
       dataIndex: "instructor",
@@ -206,18 +206,18 @@ const ClassTable = () => {
 
     {
       title: "Ngày Bắt Đầu",
-      dataIndex: "start_date",
-      key: "start_date",
+      dataIndex: "startDate",
+      key: "startDate",
       width: "10%",
-      ...getColumnSearchProps("start_date"),
+      ...getColumnSearchProps("startDate"),
     },
 
     {
       title: "Ngày Kết Thúc",
-      dataIndex: "end_date",
-      key: "end_date",
+      dataIndex: "endDate",
+      key: "endDate",
       width: "10%",
-      ...getColumnSearchProps("end_date"),
+      ...getColumnSearchProps("endDate"),
     },
     {
       title: "Phòng Học",
@@ -243,10 +243,10 @@ const ClassTable = () => {
     },
     {
       title: "Số Học Viên Hiện Tại",
-      dataIndex: "current_enrollment",
-      key: "current_enrollment",
+      dataIndex: "currentEnrollment",
+      key: "currentEnrollment",
       width: "10%",
-      ...getColumnSearchProps("current_enrollment"),
+      ...getColumnSearchProps("currentEnrollment"),
     },
   ];
 

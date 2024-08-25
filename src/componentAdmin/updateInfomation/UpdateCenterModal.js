@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
+const UpdateCenterModal = ({ isOpen, onClose, onUpdate, center }) => {
   const [updateData, setUpdateData] = useState({
-    nameCourse: "",
-    courseCode: "",
-    category: "",
-    instructor: "",
-    startDate: "",
-    endDate: "",
-    durationHours: "",
-    courseType: "",
+    facilityName: "",
+    location: "",
+    capacity: "",
+    currentUsage: "",
+    numberOfClassrooms: "",
+    openHours: "",
+    closeHours: "",
   });
 
   const handleChange = (e) => {
@@ -25,6 +24,7 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
   // const goToCourse = () => {
   //   navigate("/admin/course");
   // };
+
   const handleSubmit = (e) => {
     // e.preventDefault();
     console.log(updateData);
@@ -33,19 +33,18 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
     });
   };
   useEffect(() => {
-    if (course) {
+    if (center) {
       setUpdateData({
-        nameCourse: course.nameCourse,
-        courseCode: course.courseCode,
-        category: course.category,
-        instructor: course.instructor,
-        startDate: course.startDate,
-        endDate: course.endDate,
-        durationHours: course.durationHours,
-        courseType: course.courseType,
+        facilityName: center.facilityName,
+        location: center.facilityName,
+        capacity: center.capacity,
+        currentUsage: center.currentUsage,
+        numberOfClassrooms: center.numberOfClassrooms,
+        openHours: center.openHours,
+        closeHours: center.closeHours,
       });
     }
-  }, [course]);
+  }, [center]);
 
   if (!isOpen) return null;
 
@@ -68,17 +67,17 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
         style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
       >
         <h1 className="text-[26px] font-bold my-3 text-center">
-          Cập Nhật Khóa Học
+          Cập Nhật Cơ Sở
         </h1>
 
         <div>
           <label className="block font-medium text-gray-700 text-2xl">
-            Tên Khóa Học<span className="text-red-500">*</span>
+            Tên Cơ Sở<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
-            name="nameCourse"
-            value={updateData.nameCourse}
+            name="facilityName"
+            value={updateData.facilityName}
             onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
@@ -86,12 +85,12 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
 
         <div>
           <label className="block  font-medium text-gray-700 text-2xl">
-            Mã Khóa Học<span className="text-red-500">*</span>
+            Địa Điểm<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
-            name="courseCode"
-            value={updateData.courseCode}
+            name="location"
+            value={updateData.location}
             onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
@@ -99,61 +98,26 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
 
         <div>
           <label className="block  font-medium text-gray-700 text-2xl">
-            Chuyên Ngành<span className="text-red-500">*</span>
+            Sức Chứa<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
-            name="category"
-            value={updateData.category}
+            name="capacity"
+            value={updateData.capacity}
             onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
         </div>
         <div>
           <label className="block  font-medium text-gray-700 text-2xl">
-            Giảng Viên<span className="text-red-500">*</span>
+            Số Lượng Sử Dụng Cơ Sở Hiện Tại
+            <span className="text-red-500">*</span>
           </label>
 
           <input
             type="text"
-            name="instructor"
-            value={updateData.instructor}
-            onChange={handleChange}
-            className="w-full p-2 border rounded mb-4"
-          />
-        </div>
-        <div>
-          <label className="block  font-medium text-gray-700 text-2xl">
-            Ngày Bắt Đầu<span className="text-red-500">*</span>
-          </label>
-          <input
-            type="date"
-            name="startDate"
-            value={updateData.startDate}
-            onChange={handleChange}
-            className="w-full p-2 border rounded mb-4"
-          />
-        </div>
-        <div>
-          <label className="block  font-medium text-gray-700 text-2xl">
-            Ngày Kết Thúc<span className="text-red-500">*</span>
-          </label>
-          <input
-            type="date"
-            name="endDate"
-            value={updateData.endDate}
-            onChange={handleChange}
-            className="w-full p-2 border rounded mb-4"
-          />
-        </div>
-        <div>
-          <label className="block  font-medium text-gray-700 text-2xl">
-            Số Giờ Học Dự Kiến<span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="durationHours"
-            value={updateData.durationHours}
+            name="currentUsage"
+            value={updateData.currentUsage}
             onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
           />
@@ -161,18 +125,39 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
 
         <div>
           <label className="block  font-medium text-gray-700 text-2xl">
-            Loại Hình Thức Khóa Học<span className="text-red-500">*</span>
+            Số Lượng Phòng Học<span className="text-red-500">*</span>
           </label>
-          <select
-            name="courseType"
-            value={updateData.courseType}
+          <input
+            type="text"
+            name="numberOfClassrooms"
+            value={updateData.numberOfClassrooms}
             onChange={handleChange}
             className="w-full p-2 border rounded mb-4"
-          >
-            <option value="Online">Online</option>
-            <option value="Offline">Offline</option>
-            {/* Add specific options here */}
-          </select>
+          />
+        </div>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Giờ Mở Cửa<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="openHours"
+            value={updateData.openHours}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
+        </div>
+        <div>
+          <label className="block  font-medium text-gray-700 text-2xl">
+            Giờ Đóng Cửa<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="closeHours"
+            value={updateData.closeHours}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-4"
+          />
         </div>
         <button
           type="button"
@@ -186,4 +171,4 @@ const UpdateCourseModal = ({ isOpen, onClose, onUpdate, course }) => {
   );
 };
 
-export default UpdateCourseModal;
+export default UpdateCenterModal;
